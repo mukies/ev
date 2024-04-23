@@ -9,9 +9,9 @@ function ACEVcharger() {
   //   const { id } = useParams();
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  //   const homeuse = pathname.startsWith("/product/home");
+  // const homeuse = pathname.startsWith("/product/home");
   const publicEV = pathname.startsWith("/product/public");
-  //   const portable = pathname.startsWith("/product/portable");
+  const portable = pathname.startsWith("/product/portable");
   const products = [
     {
       name: "BMBS level 2 electric vehicle charger with cable",
@@ -126,19 +126,39 @@ function ACEVcharger() {
           }}
           className={
             publicEV
-              ? " bg-black h-[50vh] mt-5 sm:mt-10 bg-cover  sm:text-lg text-[16px] md:text-xl bg-center  "
-              : " bg-black h-[45vh] mt-5 sm:mt-10 bg-cover text-white sm:text-lg text-[16px] md:text-xl bg-center  "
+              ? " bg-black h-[50vh] flex  items-center mt-5 sm:mt-10 bg-cover  sm:text-lg text-[16px] md:text-xl bg-center  "
+              : " bg-black h-[45vh] flex  items-center mt-5 sm:mt-10 bg-cover text-white sm:text-lg text-[16px] md:text-xl bg-center  "
           }
         >
           <div className="flex flex-col gap-3 ml-2 sm:ml-20 p-3">
             <h1 className="text-xl font-bold sm:text-2xl md:text-3xl">
-              Level 2 ev wallbox charger for home
+              {publicEV
+                ? "Commercial ev charging station"
+                : portable
+                ? "AC Portable EV Charger"
+                : "Level 2 ev wallbox charger for home"}
             </h1>
             <ul className=" flex flex-col gap-2">
-              <li className="">Type A +DC 6Ma leakage protection</li>
-              <li className="">Simple and intelligent indoor or outdoor</li>
-              <li className="">Dynamic Load Balancing</li>
-              <li className="">2 years warranty</li>
+              {publicEV ? (
+                <>
+                  <li className="">Smart Version with APP</li>
+                  <li className="">OCPP1.6J</li>
+                  <li className="">Dynamic Load Balancing</li>
+                </>
+              ) : portable ? (
+                <>
+                  <li className="">Temperature protection</li>
+                  <li className="">High protection grade up to IP65.</li>
+                  <li className="">Adjustable Current 8A/10A/13A/16A/32A</li>
+                </>
+              ) : (
+                <>
+                  <li className="">Type A +DC 6Ma leakage protection</li>
+                  <li className="">Simple and intelligent indoor or outdoor</li>
+                  <li className="">Dynamic Load Balancing</li>
+                  <li className="">2 years warranty</li>
+                </>
+              )}
             </ul>
             <div className="flex justify-end w-[300px] sm:w-[400px]">
               <button className="btn btn-warning">Order Now</button>

@@ -8,6 +8,7 @@ function Product({ product }) {
         <img
           src={product.img}
           alt="product_image"
+          loading="lazy"
           className="h-full w-full object-cover object-center hover:scale-110 duration-300 cursor-pointer"
         />
       </div>

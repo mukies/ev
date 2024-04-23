@@ -113,30 +113,79 @@ function Cables() {
 
   return (
     <Layout>
-      <div className="min-h-[calc(100dvh-100px)] text-black flex flex-col">
+      <div
+        onClick={() => console.log("first", name)}
+        className="min-h-[calc(100dvh-100px)] text-black flex flex-col"
+      >
         <div
-          style={{
-            backgroundImage: "url('/acev.jpeg')",
-          }}
-          className=" bg-black h-[45vh] mt-5 sm:mt-10 bg-cover text-white sm:text-lg text-[16px] md:text-xl bg-center  "
+          style={
+            name.startsWith("charging-cable")
+              ? {
+                  backgroundImage: "url('/acev.jpeg')",
+                }
+              : { backgroundImage: "url('')" }
+          }
+          className={
+            name.startsWith("charging-cable")
+              ? " bg-black h-[45vh] mt-5 sm:mt-10 bg-cover text-white sm:text-lg text-[16px] md:text-xl bg-center "
+              : "  h-[45vh] mt-5 sm:mt-10 bg-cover flex items-center justify-center sm:text-lg text-[16px] md:text-xl bg-center "
+          }
         >
-          <div className="flex flex-col gap-5 ml-2 sm:ml-20 p-3">
-            <h1 className="text-xl font-bold sm:text-2xl md:text-3xl">
-              Level 3 dc ev fast Charging Station
+          <div
+            className={
+              name.startsWith("charging-cable")
+                ? "flex flex-col gap-5 ml-2 sm:ml-20 p-3"
+                : "flex flex-col gap-5 ml-2 sm:ml-20 justify-center items-center p-3"
+            }
+          >
+            <h1 className="text-xl font-bold sm:text-2xl md:text-5xl">
+              {name.startsWith("ev-adapter")
+                ? "EV Connector"
+                : name.startsWith("ev-pa")
+                ? "EV Parts -Enclosure Box"
+                : "EV Charging Cable"}
             </h1>
-            <ul className=" flex flex-col gap-1">
-              <li className="">
-                Time-saving - Level 3 dc ev charger, fast charging stations
-              </li>
-              <li className="">
-                Power-saving - High conversion efficiency and low standby
-              </li>
-              <li className="">
-                High Safety - Multi protection to both manual operation and
-                vehicles
-              </li>
+            <ul className=" flex flex-col text-wrap list-disc sm:list-none gap-1">
+              {name.startsWith("ev-adapter") ? (
+                <>
+                  <li className="">
+                    Dust proof cap made by sillion, attached on head
+                  </li>
+                  <li className="">
+                    Certs: CE(TUV), TUV-mark, RoHS, Reach, FCC{" "}
+                  </li>
+                  <li className="">TPU &TPE Jacket for lifetime protection</li>
+                </>
+              ) : name.startsWith("ev-par") ? (
+                <>
+                  <li className="">
+                    Our advantages is the capacity of micro-customization and
+                    modification, custom logo.
+                  </li>
+                  <li className="">
+                    EV Charger Components: Enclosure Box, PCBA, EV Charging
+                    Cable, Plug Holder.
+                  </li>
+                  <li className="">
+                    We have 6 injection molding machines, can supply goods
+                    stably.
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="">Dust proof cap made by silicon</li>
+                  <li className="">CE(TUV)/TUV-mark/RoHS/Reach/FCC</li>
+                  <li className="">TPU jacket</li>
+                </>
+              )}
             </ul>
-            <div className="flex justify-end w-[300px] sm:w-[400px]">
+            <div
+              className={
+                name.startsWith("charging-cable")
+                  ? "flex justify-end w-[300px] sm:w-[400px]"
+                  : "flex justify-center items-center w-[300px] sm:w-[400px]"
+              }
+            >
               <button className="btn btn-info">Order Now</button>
             </div>
           </div>

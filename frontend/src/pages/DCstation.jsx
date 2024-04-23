@@ -117,13 +117,13 @@ function DCstation() {
           style={{
             backgroundImage: "url('/dc_charging.jpg')",
           }}
-          className=" bg-black h-[45vh] mt-5 sm:mt-10 bg-cover text-white sm:text-lg text-[16px] md:text-xl bg-center  "
+          className=" bg-black h-[50vh] sm:h-[45vh] mt-5 sm:mt-10 bg-cover text-white sm:text-lg text-[16px] md:text-xl bg-center  "
         >
           <div className="flex flex-col gap-5 ml-2 sm:ml-20 p-3">
             <h1 className="text-xl font-bold sm:text-2xl md:text-3xl">
               Level 3 dc ev fast Charging Station
             </h1>
-            <ul className=" flex flex-col gap-1">
+            <ul className=" flex  text-wrap list-disc sm:list-none flex-col gap-1">
               <li className="">
                 Time-saving - Level 3 dc ev charger, fast charging stations
               </li>
