@@ -129,7 +129,9 @@ const Navbar = () => {
                   <a>AC Charger</a>
                 </li>
                 <li>
-                  <a>DC Charger</a>
+                  <Link role="a" to={"/solution/dc-ev-charger"}>
+                    DC Charger
+                  </Link>
                 </li>
               </ul>
             </div>

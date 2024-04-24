@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Layout from "../layout/Layout";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import ProductShowcase from "../components/ProductShowcase";
 
 const Home = () => {
   const whatCanWeDo = [
@@ -246,6 +247,7 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <ProductShowcase title={"home"} />
       </div>
     </Layout>
   );
