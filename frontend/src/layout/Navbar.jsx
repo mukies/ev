@@ -126,7 +126,9 @@ const Navbar = () => {
                 className="dropdown-content mt-1 z-[1] list-none text-lg menu p-2 shadow  bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <a>AC Charger</a>
+                  <Link to={"/solution/ac-ev-charger"} role="a">
+                    AC Charger
+                  </Link>
                 </li>
                 <li>
                   <Link role="a" to={"/solution/dc-ev-charger"}>

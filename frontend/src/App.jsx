@@ -7,6 +7,7 @@ import Cables from "./pages/Cables";
 import About from "./pages/About";
 import CreateProduct from "./pages/admin/CreateProduct";
 import DcSolution from "./pages/DcSolution";
+import AcSolution from "./pages/AcSolution";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/:name" element={<Cables />} />
         <Route path="/about-us" element={<About />} />
         <Route path="/solution/dc-ev-charger" element={<DcSolution />} />
+        <Route path="/solution/ac-ev-charger" element={<AcSolution />} />
       </Routes>
     </>
   );

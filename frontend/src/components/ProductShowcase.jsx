@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 
 function ProductShowcase({ title }) {
@@ -24,7 +25,7 @@ function ProductShowcase({ title }) {
     },
   ];
   return (
-    <div className="flex-col my-10 text-wrap gap-5 px-4 text-black flex items-center">
+    <div className="flex-col my-10 text-wrap gap-5 px-1 sm:px-4 text-black flex items-center">
       <div className="flex flex-col gap-4 justify-center items-center">
         <h1 className="text-3xl uppercase font-semibold">product showcase</h1>
         <p className="text-md w-[95%] mx-auto">
@@ -59,7 +60,7 @@ function ProductShowcase({ title }) {
               ? "/product/dc-charging-station"
               : "/product/homeuse-ev-charger"
           }
-          className="btn bg-[red] text-white capitalize text-xl hover:bg-[#b82727] duration-200"
+          className="btn bg-[red] text-white capitalize text-xl border-none hover:bg-[#b82727] duration-200"
         >
           See all products
         </Link>
