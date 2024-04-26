@@ -22,3 +22,13 @@ h2 {
 h3 {
   font-size: 20px;
 }
+.text-field p {
+  font-size: 17px;
+}
+.text-field ul {
+  font-size: 16px;
+  margin-left: 49px;
+}
+.text-field ol {
+  font-size: 19px;
+}

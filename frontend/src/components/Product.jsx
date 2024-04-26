@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { FaArrowRightLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 function Product({ product }) {
   return (
@@ -20,9 +21,13 @@ function Product({ product }) {
           ))}
         </ul>
         <div className="border-b border-red-600 flex justify-end">
-          <span className="text-[red] flex items-center gap-3 cursor-pointer md:hover:scale-110 duration-200 ">
+          <Link
+            role="span"
+            to={`/product-page/${product.name}`}
+            className="text-[red] flex items-center gap-3 cursor-pointer md:hover:scale-110 duration-200 "
+          >
             Learn more <FaArrowRightLong />
-          </span>
+          </Link>
         </div>
       </div>
     </div>

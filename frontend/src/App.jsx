@@ -8,6 +8,7 @@ import About from "./pages/About";
 import CreateProduct from "./pages/admin/CreateProduct";
 import DcSolution from "./pages/DcSolution";
 import AcSolution from "./pages/AcSolution";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/contact-us" element={<CreateProduct />} />
         <Route path="/product/:id" element={<ACEVcharger />} />
+        <Route path="/product-page/:id" element={<ProductPage />} />
         <Route path="/product/dc-charging-station" element={<DCstation />} />
         <Route path="/:name" element={<Cables />} />
         <Route path="/about-us" element={<About />} />
