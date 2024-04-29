@@ -4,6 +4,8 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import useGetImageUrl from "../../hooks/useGetImageUrl";
 import { FaTimes } from "react-icons/fa";
+import Login from "../../components/Login";
+import Register from "../../components/Register";
 
 function CreateProduct() {
   const [shortDes, setShortDes] = useState("");
@@ -134,7 +136,10 @@ function CreateProduct() {
             </div>
           )}
           <div className="px-4">
-            <button className="capitalize w-full sm:w-auto sm:min-w-max px-4 btn btn-square btn-primary">
+            <button
+              onClick={() => console.log("first", imgUrl)}
+              className="capitalize w-full sm:w-auto sm:min-w-max px-4 btn btn-square btn-primary"
+            >
               create product
             </button>
           </div>

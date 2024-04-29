@@ -80,7 +80,7 @@ const Home = () => {
                 World-Class EV Charger Manufacturer Provide high-quality and
                 reliablevehicle charging solutions.
               </p>
-              <button className=" btn btn-accent btn-outline hover:text-white">
+              <button className=" btn btn-accent btn-outline ">
                 Learn More
               </button>
             </div>
@@ -110,7 +110,7 @@ const Home = () => {
                 <li>Advanced charging technologyexpertise</li>
                 <li>Exceptional customer service andsupport</li>
               </ul>
-              <button className=" btn btn-accent btn-outline hover:text-white">
+              <button className=" btn btn-accent btn-outline ">
                 Learn More
               </button>
             </div>
@@ -124,7 +124,7 @@ const Home = () => {
               </p>
               <Link
                 to={"/product/homeuse-ev-charger"}
-                className=" btn btn-accent btn-outline hover:text-white"
+                className=" btn btn-accent btn-outline"
               >
                 Learn More
               </Link>

@@ -8,10 +8,14 @@ import {
 } from "react-icons/fa";
 import { IoPersonSharp } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
+import Login from "../components/Login";
+import Register from "../components/Register";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
+  const [auth, setAuth] = useState(false);
+  const [authPage, setAuthPage] = useState("l");
   function close() {
     const el = document.activeElement;
     if (el) {
@@ -172,10 +176,22 @@ const Navbar = () => {
         <span className="cursor-pointer">
           <FaSearch size={25} />
         </span>
-        <span className="flex items-center text-xl cursor-pointer gap-1">
+        <span
+          onClick={() => setAuth(true)}
+          className="flex items-center text-xl cursor-pointer gap-1"
+        >
           <IoPersonSharp size={21} /> Login
         </span>
       </div>
+      {auth && (
+        <div className="border-2 text-wrap fixed top-0 left-0 right-0 bottom-0 bg-[#000000d0] flex justify-center items-center z-[222] border-black">
+          {authPage == "l" ? (
+            <Login setAuth={setAuth} setAuthPage={setAuthPage} />
+          ) : (
+            <Register setAuth={setAuth} setAuthPage={setAuthPage} />
+          )}
+        </div>
+      )}
       {/* --------  */}
       <div className=" z-[90] fixed  sm:top-[25px] top-[15px] left-3  lg:hidden">
         <span onClick={() => setShow(true)} className="btn sm:btn-md btn-sm  ">
