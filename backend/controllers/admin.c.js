@@ -24,7 +24,11 @@ exports.adminLogin = async (req, res) => {
 
     const token = getToken(isRegistered._id, res);
 
-    res.json({ success: true, message: "Login successfull.", token });
+    res.json({
+      success: true,
+      message: "Login successfull.",
+      id: isRegistered._id,
+    });
   } catch (error) {
     res.json({ success: false, message: "error on admin login", error });
   }
@@ -91,5 +95,25 @@ exports.adminChangePassword = async (req, res) => {
   } catch (error) {
     console.log("first", error);
     res.json({ success: false, message: "Error while changing password." });
+  }
+};
+
+exports.logout = async (req, res) => {
+  res
+    .cookie("jwt", "", { maxAge: 0 })
+    .json({ success: true, message: "logout successfull." });
+};
+
+exports.checkAdminExist = async (req, res) => {
+  try {
+    const isRegistered = await adminModel.find();
+
+    if (isRegistered.length) {
+      res.json({ success: true, adminExist: true });
+    } else {
+      res.json({ success: true, adminExist: false });
+    }
+  } catch (error) {
+    res.json({ success: false, message: "Error while checking admin." });
   }
 };

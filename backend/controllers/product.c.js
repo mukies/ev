@@ -1,5 +1,6 @@
 const productModel = require("../models/product.m");
 const slugify = require("slugify");
+const { v2: cloudinery } = require("cloudinary");
 
 exports.addProduct = async (req, res) => {
   const { productName, category, shortDescription, mainDescription } = req.body;
@@ -27,6 +28,14 @@ exports.addProduct = async (req, res) => {
         success: false,
         message: "Product name already exist.",
       });
+
+    const res = await cloudinery.uploader.upload(productImage);
+    productImage = res.secure_url;
+
+    if (descriptiveImage) {
+      const response = await cloudinery.uploader.upload(descriptiveImage);
+      descriptiveImage = response.secure_url;
+    }
 
     const product = new productModel({
       productImage,
@@ -101,10 +110,15 @@ exports.updateProduct = async (req, res) => {
 
     if (productImage.length && !productImage.startsWith("http")) {
       //do something
+
+      const res = await cloudinery.uploader.upload(productImage);
+      productImage = res.secure_url;
     }
 
     if (descriptiveImage.length && !descriptiveImage.startsWith("http")) {
       //do something
+      const res = await cloudinery.uploader.upload(descriptiveImage);
+      descriptiveImage = res.secure_url;
     }
 
     const product = await productModel.findByIdAndUpdate(id, {

@@ -24,7 +24,11 @@ exports.userLogin = async (req, res) => {
 
     const token = getToken(isRegistered._id, res);
 
-    res.json({ success: true, message: "Login successfull.", token });
+    res.json({
+      success: true,
+      message: "Login successfull.",
+      id: isRegistered._id,
+    });
   } catch (error) {
     res.json({ success: false, message: "Error on user login", error });
   }
@@ -91,4 +95,10 @@ exports.userChangePassword = async (req, res) => {
     console.log("first", error);
     res.json({ success: false, message: "Error while changing password." });
   }
+};
+
+exports.logout = async (req, res) => {
+  res
+    .cookie("jwt", "", { maxAge: 0 })
+    .json({ success: true, message: "logout successfull." });
 };
