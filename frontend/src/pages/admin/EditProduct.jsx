@@ -1,12 +1,11 @@
-import { useState } from "react";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
-import useGetImageUrl from "../../hooks/useGetImageUrl";
 import { FaTimes } from "react-icons/fa";
 import LayoutAdmin from "../../layout/admin/LayoutAdmin";
+import ReactQuill from "react-quill";
+import { useState } from "react";
+import useGetImageUrl from "../../hooks/useGetImageUrl";
 import { Link } from "react-router-dom";
 
-function CreateProduct() {
+function EditProduct() {
   const [shortDes, setShortDes] = useState("");
   const [fullDes, setFullDes] = useState("");
   const [category, setCategory] = useState("ev-parts");
@@ -20,7 +19,9 @@ function CreateProduct() {
     <LayoutAdmin>
       <div className="max-w-[768px] text-gray-700 py-5 mx-auto">
         <div className="max-w-max flex mx-auto justify-center items-center p-2 border-b-2 border-gray-700">
-          <h1 className="text-center text-3xl font-semibold">Create Product</h1>
+          <h1 className="text-center text-3xl font-semibold">
+            Edit Product Details
+          </h1>
         </div>
         <form
           className="sm:p-5 h-auto sm:border-2 border-gray-300 rounded-lg mt-5 flex flex-col gap-5"
@@ -171,19 +172,16 @@ function CreateProduct() {
               />
             </div>
           )}
-          <div className="flex items-center gap-5">
-            <button
-              onClick={() => console.log("first", imgUrl)}
-              className="capitalize w-full sm:w-auto sm:min-w-max px-4 btn btn-square btn-primary text-white"
-            >
-              create product
+          <div className="flex items-center gap-5 ">
+            <button className="capitalize w-full sm:w-auto sm:min-w-max px-4 btn btn-square btn-primary text-white">
+              Update
             </button>
             <Link
               role="button"
               to={"/admin/product"}
               className="btn btn-active"
             >
-              Back
+              Cancel
             </Link>
           </div>
         </form>
@@ -192,4 +190,4 @@ function CreateProduct() {
   );
 }
 
-export default CreateProduct;
+export default EditProduct;

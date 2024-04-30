@@ -9,12 +9,21 @@ import CreateProduct from "./pages/admin/CreateProduct";
 import DcSolution from "./pages/DcSolution";
 import AcSolution from "./pages/AcSolution";
 import ProductPage from "./pages/ProductPage";
+import AdminAuth from "./pages/admin/AdminAuth";
+import AdminHome from "./pages/admin/AdminHome";
+import Products from "./pages/admin/Products";
+import EditProduct from "./pages/admin/EditProduct";
+import Users from "./pages/admin/Users";
+import AdminProtectedRoute from "./protection/AdminProtectedRoute";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
+  const adminAuth = JSON.parse(localStorage.getItem("_A"));
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={adminAuth ? <AdminHome /> : <Home />} />
+        <Route path="/ev-admin" element={<AdminAuth />} />
         <Route path="/contact-us" element={<CreateProduct />} />
         <Route path="/product/:id" element={<ACEVcharger />} />
         <Route path="/product-page/:id" element={<ProductPage />} />
@@ -23,6 +32,14 @@ function App() {
         <Route path="/about-us" element={<About />} />
         <Route path="/solution/dc-ev-charger" element={<DcSolution />} />
         <Route path="/solution/ac-ev-charger" element={<AcSolution />} />
+
+        <Route element={<AdminProtectedRoute />}>
+          <Route path="/admin/product" element={<Products />} />
+          <Route path="/admin/user" element={<Users />} />
+          <Route path="/admin/add-product" element={<CreateProduct />} />
+          <Route path="/admin/edit-product/:id" element={<EditProduct />} />
+        </Route>
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
   );
