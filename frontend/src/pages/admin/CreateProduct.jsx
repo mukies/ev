@@ -5,17 +5,35 @@ import useGetImageUrl from "../../hooks/useGetImageUrl";
 import { FaTimes } from "react-icons/fa";
 import LayoutAdmin from "../../layout/admin/LayoutAdmin";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useAddProduct } from "../../hooks/addProduct";
 
 function CreateProduct() {
+  const [productName, setProductName] = useState("");
   const [shortDes, setShortDes] = useState("");
   const [fullDes, setFullDes] = useState("");
-  const [category, setCategory] = useState("ev-parts");
+  const [category, setCategory] = useState("");
+  //product image
   const { previewImg, imgUrl, setImgUrl } = useGetImageUrl();
+  //descriptive image
   const {
     previewImg: preview,
     imgUrl: url2,
     setImgUrl: setUrl2,
   } = useGetImageUrl();
+
+  const { addProduct, loading } = useAddProduct();
+
+  const handleAddProduct = () => {
+    if (!productName || !imgUrl || !category || !shortDes) {
+      toast.error("Please provide required details.");
+      return;
+    }
+    if (!loading) {
+      addProduct(productName, imgUrl, category, shortDes, fullDes, url2);
+    }
+  };
+
   return (
     <LayoutAdmin>
       <div className="max-w-[768px] text-gray-700 py-5 mx-auto">
@@ -35,6 +53,7 @@ function CreateProduct() {
                 Product Image<span className="text-[red]">*</span>
               </div>
               <input
+                required
                 onChange={previewImg}
                 id="file"
                 type="file"
@@ -62,7 +81,10 @@ function CreateProduct() {
               Product Name<span className="text-[red] text-xl">*</span>
             </span>
             <input
+              required
               id="title"
+              value={productName}
+              onChange={(e) => setProductName(e.target.value)}
               type="text"
               placeholder="Product name..."
               className="input input-bordered bg-gray-100 w-full "
@@ -73,6 +95,7 @@ function CreateProduct() {
               Category<span className="text-[red] text-xl">*</span>
             </span>
             <select
+              required
               id="category"
               onChange={(e) => setCategory(e.target.value)}
               className="select select-bordered bg-gray-50 w-full max-w-xs"
@@ -157,7 +180,7 @@ function CreateProduct() {
             </label>
           )}
           {url2 && (
-            <div className="h-[100px] w-[100px]  mx-auto  relative">
+            <div className="h-[100px] w-[100px]  mx-auto sm:mx-0  relative">
               <span
                 onClick={() => setUrl2(null)}
                 className="absolute top-0 right-0 btn btn-circle btn-sm"
@@ -171,12 +194,16 @@ function CreateProduct() {
               />
             </div>
           )}
-          <div className="flex items-center gap-5">
+          <div className="flex items-center px-5 gap-5">
             <button
-              onClick={() => console.log("first", imgUrl)}
-              className="capitalize w-full sm:w-auto sm:min-w-max px-4 btn btn-square btn-primary text-white"
+              onClick={() => handleAddProduct()}
+              className="capitalize min-w-max px-4 btn btn-square btn-primary text-white"
             >
-              create product
+              {loading ? (
+                <span className="loading loading-spinner"></span>
+              ) : (
+                "create product"
+              )}
             </button>
             <Link
               role="button"

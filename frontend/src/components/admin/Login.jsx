@@ -1,4 +1,27 @@
+import { useState } from "react";
+import { ImEye } from "react-icons/im";
+import { TbEyeClosed } from "react-icons/tb";
+import { useAdminLogin } from "../../hooks/adminLogin";
+import { toast } from "react-toastify";
+
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [show, setShow] = useState(false);
+
+  const { adminLogin, loading } = useAdminLogin();
+
+  const handleLogin = () => {
+    if (!email || !password) {
+      toast.error("Please Enter Email and Password");
+      return;
+    }
+
+    if (!loading) {
+      adminLogin(email, password);
+    }
+  };
+
   return (
     <div className="h-[100dvh] w-full flex justify-center items-center">
       <div className="w-[90vw]  sm:w-[40vw] text-gray-700 flex justify-center text-wrap ">
@@ -12,7 +35,10 @@ function Login() {
               <label className="label">
                 <span className="label-text text-gray-700">Email</span>
               </label>
+
               <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 placeholder="email"
                 className="input input-bordered bg-gray-100"
@@ -23,15 +49,34 @@ function Login() {
               <label className="label">
                 <span className="label-text text-gray-700">Password</span>
               </label>
-              <input
-                type="password"
-                placeholder="password"
-                className="input input-bordered bg-gray-100"
-                required
-              />
+              <div className="flex items-center relative">
+                <input
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  type={show ? "text" : "password"}
+                  placeholder="password"
+                  className="input w-full input-bordered bg-gray-100"
+                  required
+                />
+                <span
+                  onClick={() => setShow((p) => !p)}
+                  className="absolute cursor-pointer right-[10px] top-[25%]"
+                >
+                  {show ? <TbEyeClosed size={25} /> : <ImEye size={25} />}
+                </span>
+              </div>
             </div>
             <div className="form-control mt-5">
-              <button className="btn btn-primary text-white">Login</button>
+              <button
+                onClick={handleLogin}
+                className="btn btn-primary text-white"
+              >
+                {loading ? (
+                  <span className="loading loading-spinner"></span>
+                ) : (
+                  "Login"
+                )}
+              </button>
             </div>
           </form>
         </div>

@@ -10,11 +10,11 @@ const { adminProtection } = require("../middlewares/adminProtection");
 const router = require("express").Router();
 
 router.get("/product-list", getAll);
-router.get("/product-details", getOne);
+router.get("/product-details/:slug", getOne);
 
 //admin
 router.post("/add-product", adminProtection, addProduct);
 router.put("/update-product/:id", adminProtection, updateProduct);
-router.delete("delete-product/:id", adminProtection, deleteProduct);
+router.delete("/delete-product/:id", adminProtection, deleteProduct);
 
 module.exports = router;

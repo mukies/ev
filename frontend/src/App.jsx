@@ -16,6 +16,7 @@ import EditProduct from "./pages/admin/EditProduct";
 import Users from "./pages/admin/Users";
 import AdminProtectedRoute from "./protection/AdminProtectedRoute";
 import PageNotFound from "./pages/PageNotFound";
+import Contact from "./pages/Contact";
 
 function App() {
   const adminAuth = JSON.parse(localStorage.getItem("_A"));
@@ -24,7 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={adminAuth ? <AdminHome /> : <Home />} />
         <Route path="/ev-admin" element={<AdminAuth />} />
-        <Route path="/contact-us" element={<CreateProduct />} />
+        <Route path="/contact-us" element={<Contact />} />
         <Route path="/product/:id" element={<ACEVcharger />} />
         <Route path="/product-page/:id" element={<ProductPage />} />
         <Route path="/product/dc-charging-station" element={<DCstation />} />
@@ -37,7 +38,7 @@ function App() {
           <Route path="/admin/product" element={<Products />} />
           <Route path="/admin/user" element={<Users />} />
           <Route path="/admin/add-product" element={<CreateProduct />} />
-          <Route path="/admin/edit-product/:id" element={<EditProduct />} />
+          <Route path="/admin/product/:id" element={<EditProduct />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>

@@ -14,7 +14,7 @@ export const useAdminLogin = () => {
       });
       if (data.success) {
         localStorage.setItem("_A", JSON.stringify(data.id));
-        window.location.href("/");
+        window.location.href = "/";
       } else {
         toast.error(data.message);
       }

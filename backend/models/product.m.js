@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema(
     productImage: { type: String, required: true, default: "" },
     category: { type: String, required: true, default: "homeuse-ev-charger" },
     shortDescription: { type: String, required: true },
-    mainDescription: { type: String, required: true },
+    mainDescription: { type: String },
     descriptiveImage: { type: String, default: "" },
   },
   { timestamps: true }

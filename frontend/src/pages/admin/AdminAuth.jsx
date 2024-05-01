@@ -3,11 +3,17 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import Login from "../../components/admin/Login";
 import Register from "../../components/admin/Register";
+import { useNavigate } from "react-router-dom";
 
 function AdminAuth() {
   const [isRegistered, setIsRegistered] = useState(false);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const adminAuth = JSON.parse(localStorage.getItem("_A"));
   useEffect(() => {
+    if (adminAuth) {
+      navigate("/");
+    }
     adminCheck();
   }, []);
 
@@ -45,7 +51,7 @@ function AdminAuth() {
     >
       {loading ? (
         <span className="loading loading-spinner scale-125"></span>
-      ) : !loading && !isRegistered ? (
+      ) : !loading && isRegistered ? (
         <Login />
       ) : (
         <Register />

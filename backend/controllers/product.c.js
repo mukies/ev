@@ -6,13 +6,9 @@ exports.addProduct = async (req, res) => {
   const { productName, category, shortDescription, mainDescription } = req.body;
   let { productImage, descriptiveImage } = req.body;
 
-  if (
-    !productName ||
-    !category ||
-    !shortDescription ||
-    !mainDescription ||
-    !productImage
-  )
+  console.log("first", productName, category, shortDescription);
+
+  if (!productName || !category || !shortDescription || !productImage)
     return res.json({
       success: false,
       message: "Please provide all required information.",
@@ -29,8 +25,8 @@ exports.addProduct = async (req, res) => {
         message: "Product name already exist.",
       });
 
-    const res = await cloudinery.uploader.upload(productImage);
-    productImage = res.secure_url;
+    const resp = await cloudinery.uploader.upload(productImage);
+    productImage = resp.secure_url;
 
     if (descriptiveImage) {
       const response = await cloudinery.uploader.upload(descriptiveImage);
@@ -40,6 +36,7 @@ exports.addProduct = async (req, res) => {
     const product = new productModel({
       productImage,
       category,
+      slug,
       productName,
       shortDescription,
       mainDescription,
@@ -48,6 +45,7 @@ exports.addProduct = async (req, res) => {
     await product.save();
     res.json({ success: true, message: "Product added successfully." });
   } catch (error) {
+    console.log("error", error);
     res.json({ success: false, message: "Error while adding a product." });
   }
 };
@@ -64,7 +62,7 @@ exports.deleteProduct = async (req, res) => {
 
 exports.getAll = async (req, res) => {
   try {
-    const products = await productModel.find();
+    const products = await productModel.find().sort({ createdAt: -1 });
     res.json({ success: true, products });
   } catch (error) {
     res.json({ success: false, message: "Error while fetching products." });
@@ -92,13 +90,7 @@ exports.updateProduct = async (req, res) => {
   const { productName, category, shortDescription, mainDescription } = req.body;
   let { productImage, descriptiveImage } = req.body;
   const { id } = req.params;
-  if (
-    !productName ||
-    !category ||
-    !shortDescription ||
-    !mainDescription ||
-    !productImage
-  ) {
+  if (!productName || !category || !shortDescription || !productImage) {
     return res.json({
       success: false,
       message: "Please provide all required information.",
@@ -106,22 +98,23 @@ exports.updateProduct = async (req, res) => {
   }
 
   try {
+    const product = await productModel.findOne({ slug: id });
     const slug = slugify(productName.toLowerCase(), "-");
 
-    if (productImage.length && !productImage.startsWith("http")) {
+    if (productImage?.length && !productImage?.startsWith("http")) {
       //do something
 
-      const res = await cloudinery.uploader.upload(productImage);
-      productImage = res.secure_url;
+      const resp = await cloudinery.uploader.upload(productImage);
+      productImage = resp.secure_url;
     }
 
-    if (descriptiveImage.length && !descriptiveImage.startsWith("http")) {
+    if (descriptiveImage?.length && !descriptiveImage?.startsWith("http")) {
       //do something
       const res = await cloudinery.uploader.upload(descriptiveImage);
       descriptiveImage = res.secure_url;
     }
 
-    const product = await productModel.findByIdAndUpdate(id, {
+    const productUpdate = await productModel.findByIdAndUpdate(product._id, {
       productName,
       productImage,
       category,
@@ -130,7 +123,7 @@ exports.updateProduct = async (req, res) => {
       descriptiveImage,
       slug,
     });
-    await product.save();
+    await productUpdate.save();
 
     res.json({ success: true, message: "Product details has been updated." });
   } catch (error) {

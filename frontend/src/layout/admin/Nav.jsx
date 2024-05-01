@@ -1,10 +1,22 @@
+import axios from "axios";
 import { useState } from "react";
 import { FaBars, FaSearch, FaTimes } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Nav() {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
+
+  const logout = async () => {
+    const { data } = await axios.post("/api/admin/logout");
+    if (data.success) {
+      localStorage.removeItem("_A");
+      window.location.href = "/";
+    } else {
+      toast.error(data.messagae);
+    }
+  };
 
   return (
     <nav className="h-[60px]  z-[99] sm:h-[100px] md:sticky top-0 bg-gray-200 flex justify-center sm:gap-20 lg:gap-0 lg:justify-between  lg:px-10 items-center">
@@ -51,7 +63,7 @@ function Nav() {
         <span className="cursor-pointer">
           <FaSearch size={25} />
         </span>
-        <span className="cursor-pointer">
+        <span onClick={logout} className="btn ">
           {/* <FaSearch size={25} /> */}Logout
         </span>
       </div>

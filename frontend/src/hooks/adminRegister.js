@@ -12,14 +12,16 @@ export const useAdminRegister = () => {
         email,
         password,
       });
+      console.log("register", data);
       if (data.success) {
         const { data: loginData } = await axios.post("/api/admin/login", {
           email,
           password,
         });
+        console.log("login", loginData);
         if (loginData.success) {
           localStorage.setItem("_A", JSON.stringify(loginData.id));
-          window.location.href("/");
+          window.location.href = "/";
         } else {
           toast.error(loginData.message);
         }
