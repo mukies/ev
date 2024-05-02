@@ -198,7 +198,7 @@ function EditProduct() {
 
           <label htmlFor="mini-des" className="flex  flex-col gap-2">
             <span className="text-3xl font-semibold px-2">
-              Short Description
+              Short Description<span className="text-[red] text-xl">*</span>
             </span>
             <ReactQuill
               className="w-[100vw]  sm:w-full"
@@ -208,7 +208,16 @@ function EditProduct() {
             />
           </label>
 
-          <label htmlFor="quill" className="flex  flex-col gap-2">
+          <label
+            htmlFor="quill"
+            className={
+              category == "charging-cable" ||
+              category == "ev-adapter" ||
+              category == "ev-parts"
+                ? "hidden"
+                : "flex  flex-col gap-2"
+            }
+          >
             <span className="text-3xl font-semibold px-2">
               Full Description
             </span>

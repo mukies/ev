@@ -1,35 +1,62 @@
 import Layout from "../layout/Layout";
 import "../index.css";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 function ProductPage() {
-  const demo =
-    "<p>shjhskjsjkdkjsfhkjhfkjhfkjkjdfhkjshsjkhdjksdhkhfjsjk sdhjshdjshdjs sjdjsdhjsd sjdsdjshdjsd jsdhjsdjsdhjs djsdjshdjsd sdjsbdjsd sdjsdbsj djsd sjdsd sdsdsj dsdsjds d</p><ul><li>hghshdshdhs</li><li>hghshdshdhs</li><li>hghshdshdhs</li><li>hghshdshdhs</li><li>hghshdshdhs</li></ul>";
+  const { id } = useParams();
+  const [product, setProduct] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getProductDetails();
+  }, [id]);
+
+  const getProductDetails = async () => {
+    try {
+      const { data } = await axios.get(`/api/product/product-details/${id}`);
+      if (data.success) {
+        setProduct(data.product);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Layout>
       <div className="text-wrap text-gray-800">
+        {loading && (
+          <div className="fixed top-0 left-0 right-0 bottom-0 bg-white flex z-[89] justify-center items-center">
+            <span className="loading loading-spinner scale-125 text-gray-800"></span>
+          </div>
+        )}
         <div
           style={{
             backgroundImage: "url('/acev.jpeg')",
           }}
-          className=" bg-black h-[50vh] sm:h-[50vh] bg-cover text-white sm:text-lg text-[16px] md:text-xl bg-center  "
+          className=" bg-black h-[50vh] flex  items-center sm:h-[50vh] bg-cover text-white sm:text-lg text-[16px] md:text-xl bg-center  "
         >
           <div className="flex flex-col gap-5 ml-2 sm:ml-20 p-3">
             <h1 className="text-xl font-bold sm:text-2xl md:text-3xl">
-              Level 3 dc ev fast Charging Station
+              {product.productName}
             </h1>
-            <ul className=" flex  text-wrap list-disc sm:list-none flex-col gap-1">
-              <li className="">
-                Time-saving - Level 3 dc ev charger, fast charging stations
-              </li>
-              <li className="">
-                Power-saving - High conversion efficiency and low standby
-              </li>
-              <li className="">
-                High Safety - Multi protection to both manual operation and
-                vehicles
-              </li>
-            </ul>
-            <div className="flex justify-end w-[300px] sm:w-[400px]">
+            {/* <div
+              dangerouslySetInnerHTML={{
+                __html:
+                  product.shortDescription?.length > 250
+                    ? product.shortDescription.slice(0, 250) + "..."
+                    : product.shortDescription,
+              }}
+              className=" flex  text-wrap list-disc sm:list-none  text-title flex-col gap-1 "
+            ></div> */}
+            <div className="flex justify-center mx-auto w-[300px] sm:w-[400px]">
               <button className="btn btn-info">Order Now</button>
             </div>
           </div>
@@ -37,7 +64,7 @@ function ProductPage() {
         <div className="flex flex-col sm:flex-row gap-5 px-1 mt-5 sm:mt-10 sm:px-10">
           <div className="flex-[0.7] overflow-hidden sm:rounded-xl ">
             <img
-              src="/ev_car.jpeg"
+              src={product.productImage}
               alt="product-image"
               loading="lazy"
               className="h-[350px] w-full object-cover bg-center sm:hover:scale-110 duration-200"
@@ -45,11 +72,11 @@ function ProductPage() {
           </div>
           <div className="flex flex-col gap-3 flex-1 justify-center">
             <h2 className="text-2xl font-semibold text-center underline">
-              BMBS Home use EV charger with cable
+              {product.productName}
             </h2>
             <div
               className="px-5 flex flex-col gap-3 text-field"
-              dangerouslySetInnerHTML={{ __html: demo }}
+              dangerouslySetInnerHTML={{ __html: product.shortDescription }}
             ></div>
             <div className="flex justify-center items-center">
               <button className="btn bg-[red] hover:bg-[#ff4747] text-white ">
@@ -59,9 +86,17 @@ function ProductPage() {
           </div>
         </div>
         <div
-          dangerouslySetInnerHTML={{ __html: demo }}
+          dangerouslySetInnerHTML={{ __html: product.mainDescription }}
           className="text-field px-2 mt-5 sm:px-10 sm:mt-10"
         ></div>
+        <div className="sm:w-[80%] w-[95%] my-5 mx-auto h-auto  ">
+          <img
+            src="/features.webp"
+            alt="descriptive-image"
+            className="w-full h-full object-cover object-center "
+            loading="lazy"
+          />
+        </div>
         <div className="flex flex-col gap-5 sm:gap-10 sm:flex-row px-1  mt-1 sm:px-10 sm:mt-10">
           <div className="p-3 flex-1 flex bg-gray-200 flex-col border-2 max-h-max border-black rounded-xl">
             <div className="h-[350px] w-full overflow-hidden">
@@ -127,8 +162,15 @@ function ProductPage() {
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-5 p-5 sm:w-[95%] w-[99%] mx-auto sm:px-10 mt-5 sm:mt-10 border-2 border-black rounded-xl bg-gray-200">
-          <div className="flex-1 bg-black h-[350px]"></div>
+        <div className="flex flex-col sm:flex-row items-center gap-5 p-5 sm:w-[95%] w-[99%] mx-auto sm:px-10 mt-5 sm:mt-10 border-2 border-black rounded-xl bg-gray-200">
+          <div className="flex-1 bg-black h-[350px] rounded-xl overflow-hidden">
+            <img
+              src="/load_balancing.webp"
+              alt="load_balancing"
+              loading="lazy"
+              className="h-full w-full object-cover object-center"
+            />
+          </div>
           <div className="flex-[1.5] flex flex-col  gap-3">
             <h3 className="text-xl font-semibold ">Dynamic Load Balance</h3>
             <div className="flex flex-col gap-1 sm:w-[80%]">

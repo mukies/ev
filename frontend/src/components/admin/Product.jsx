@@ -34,7 +34,7 @@ function Product({ product }) {
   return (
     <div className="flex items-center p-2 justify-between rounded-lg border-2 border-gray-300 w-[95%] mx-auto">
       <div className="flex items-center gap-2">
-        <div className="h-[50px] w-[50px] sm:h-[100px] sm:w-[100px] overflow-hidden rounded-md">
+        <div className="h-[50px] bg-gray-200 w-[50px] sm:h-[100px] sm:w-[100px] overflow-hidden rounded-md">
           <img
             src={product.productImage}
             alt={product.productName}

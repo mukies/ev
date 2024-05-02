@@ -9,6 +9,7 @@ body {
 }
 ul {
   list-style-type: disc;
+  padding-inline: 10px;
 }
 ol {
   list-style-type: decimal;

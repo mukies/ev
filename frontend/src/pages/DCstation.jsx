@@ -3,116 +3,44 @@ import Categories from "../components/Categories";
 import { categories } from "../assets/categories";
 import { useNavigate } from "react-router-dom";
 import Product from "../components/Product";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function DCstation() {
-  //   const { id } = useParams();
   const navigate = useNavigate();
-  const products = [
-    {
-      name: "BMBS level 2 electric vehicle charger with cable",
-      mini_des: [
-        "Start method: RFID & APP",
-        "Single phase up to 7.4kw",
-        "Three phases 11kw/22kw",
-        "RCD: Type A+DC 6Ma",
-      ],
-      img: "/ev_car.jpeg",
-    },
-    {
-      name: "BMBS level 2 electric vehicle charger with cable",
-      mini_des: [
-        "Start method: RFID & APP",
-        "Single phase up to 7.4kw",
-        "Three phases 11kw/22kw",
-        "RCD: Type A+DC 6Ma",
-      ],
-      img: "/ev_car.jpeg",
-    },
-    {
-      name: "BMBS level 2 electric vehicle charger with cable",
-      mini_des: [
-        "Start method: RFID & APP",
-        "Single phase up to 7.4kw",
-        "Three phases 11kw/22kw",
-        "RCD: Type A+DC 6Ma",
-      ],
-      img: "/ev_car.jpeg",
-    },
-    {
-      name: "BMBS level 2 electric vehicle charger with cable",
-      mini_des: [
-        "Start method: RFID & APP",
-        "Single phase up to 7.4kw",
-        "Three phases 11kw/22kw",
-        "RCD: Type A+DC 6Ma",
-      ],
-      img: "/ev_car.jpeg",
-    },
-    {
-      name: "BMBS level 2 electric vehicle charger with cable",
-      mini_des: [
-        "Start method: RFID & APP",
-        "Single phase up to 7.4kw",
-        "Three phases 11kw/22kw",
-        "RCD: Type A+DC 6Ma",
-      ],
-      img: "/ev_car.jpeg",
-    },
-    {
-      name: "BMBS level 2 electric vehicle charger with cable",
-      mini_des: [
-        "Start method: RFID & APP",
-        "Single phase up to 7.4kw",
-        "Three phases 11kw/22kw",
-        "RCD: Type A+DC 6Ma",
-      ],
-      img: "/ev_car.jpeg",
-    },
-    {
-      name: "BMBS level 2 electric vehicle charger with cable",
-      mini_des: [
-        "Start method: RFID & APP",
-        "Single phase up to 7.4kw",
-        "Three phases 11kw/22kw",
-        "RCD: Type A+DC 6Ma",
-      ],
-      img: "/ev_car.jpeg",
-    },
-    {
-      name: "BMBS level 2 electric vehicle charger with cable",
-      mini_des: [
-        "Start method: RFID & APP",
-        "Single phase up to 7.4kw",
-        "Three phases 11kw/22kw",
-        "RCD: Type A+DC 6Ma",
-      ],
-      img: "/ev_car.jpeg",
-    },
-    {
-      name: "BMBS level 2 electric vehicle charger with cable",
-      mini_des: [
-        "Start method: RFID & APP",
-        "Single phase up to 7.4kw",
-        "Three phases 11kw/22kw",
-        "RCD: Type A+DC 6Ma",
-      ],
-      img: "/ev_car.jpeg",
-    },
-    {
-      name: "BMBS level 2 electric vehicle charger with cable",
-      mini_des: [
-        "Start method: RFID & APP",
-        "Single phase up to 7.4kw",
-        "Three phases 11kw/22kw",
-        "RCD: Type A+DC 6Ma",
-      ],
-      img: "/ev_car.jpeg",
-    },
-  ];
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  //   const { id } = useParams();
 
+  useEffect(() => {
+    getProduct();
+  }, []);
+
+  const getProduct = async () => {
+    try {
+      const { data } = await axios.get(
+        `/api/product/product-list-with-category/dc-charging-station`
+      );
+      if (data.success) {
+        setProducts(data.products);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <Layout>
       <div className="min-h-[calc(100dvh-100px)] text-black flex flex-col">
+        {loading && (
+          <div className="fixed top-0 left-0 right-0 bottom-0 bg-white flex z-[89] justify-center items-center">
+            <span className="loading loading-spinner scale-125 text-gray-800"></span>
+          </div>
+        )}
         <div
           style={{
             backgroundImage: "url('/dc_charging.jpg')",
@@ -187,9 +115,18 @@ function DCstation() {
           </div>
           <div className="xl:flex-[7] flex-[2] max-h-max flex flex-col gap-10">
             {/* item 1  */}
-            {products.map((pro, i) => (
-              <Product key={i} product={pro} />
-            ))}
+            {products.length
+              ? products.map((pro, i) => <Product key={i} product={pro} />)
+              : ""}
+            {products.length == 0 ? (
+              <div className="h-[30vh] flex justify-center items-center ">
+                <span className="text-2xl text-gray-600 font-semibold">
+                  No Product Found.
+                </span>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>

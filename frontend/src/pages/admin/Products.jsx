@@ -56,9 +56,18 @@ function Products() {
           </Link>
         </div>
         <div className="flex flex-col gap-4">
-          {product.map((item, i) => (
-            <Product key={i} product={item} />
-          ))}
+          {product.length
+            ? product.map((item, i) => <Product key={i} product={item} />)
+            : ""}
+          {product.length == 0 ? (
+            <div className="h-[30vh] flex justify-center items-center ">
+              <span className="text-2xl text-gray-600 font-semibold">
+                No Product Created Yet.
+              </span>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </LayoutAdmin>

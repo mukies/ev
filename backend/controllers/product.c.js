@@ -6,8 +6,6 @@ exports.addProduct = async (req, res) => {
   const { productName, category, shortDescription, mainDescription } = req.body;
   let { productImage, descriptiveImage } = req.body;
 
-  console.log("first", productName, category, shortDescription);
-
   if (!productName || !category || !shortDescription || !productImage)
     return res.json({
       success: false,
@@ -131,5 +129,18 @@ exports.updateProduct = async (req, res) => {
       success: false,
       message: "Error while updating product details.",
     });
+  }
+};
+
+exports.getCategoryWise = async (req, res) => {
+  const { slug } = req.params;
+  try {
+    const products = await productModel
+      .find({ category: slug })
+      .sort({ createdAt: -1 });
+
+    res.json({ success: true, products });
+  } catch (error) {
+    res.json({ success: false, messge: "Error while getting product list." });
   }
 };
