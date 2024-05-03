@@ -5,23 +5,40 @@ import {
   FaBars,
   FaSearch,
   FaTimes,
+  FaChevronDown,
 } from "react-icons/fa";
 import { IoPersonSharp } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import Login from "../components/Login";
 import Register from "../components/Register";
+import { toast } from "react-toastify";
+import axios from "axios";
+import AccountDetail from "../components/AccountDetail";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [auth, setAuth] = useState(false);
   const [authPage, setAuthPage] = useState("l");
+  const [showDetail, setShowDetail] = useState(false);
+  const userAuth = JSON.parse(localStorage.getItem("_U"));
+
   function close() {
     const el = document.activeElement;
     if (el) {
       el?.blur();
     }
   }
+  const logout = async () => {
+    const { data } = await axios.post("/api/user/logout");
+    if (data.success) {
+      localStorage.removeItem("_U");
+      navigate("/");
+    } else {
+      toast.error(data.messagae);
+    }
+  };
+
   return (
     <nav className="h-[60px]  z-[99] sm:h-[100px] md:sticky top-0 bg-gray-200 flex justify-center sm:gap-20 lg:gap-0 lg:justify-between  lg:px-5 items-center">
       {/* --  */}
@@ -173,15 +190,46 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="hidden md:flex gap-5 lg:gap-3 items-center">
-        <span className="cursor-pointer">
+        <Link role="span" to={"/product-search"} className="cursor-pointer">
           <FaSearch size={25} />
-        </span>
-        <span
-          onClick={() => setAuth(true)}
-          className="flex items-center text-xl cursor-pointer gap-1"
-        >
-          <IoPersonSharp size={21} /> Login
-        </span>
+        </Link>
+        {!userAuth ? (
+          <span
+            onClick={() => setAuth(true)}
+            className="flex items-center text-xl cursor-pointer gap-1"
+          >
+            <IoPersonSharp size={21} />
+            Login
+          </span>
+        ) : (
+          ""
+        )}
+        {userAuth ? (
+          <div className="flex relative items-center group ">
+            <span className="flex items-center text-xl gap-1 cursor-pointer">
+              <IoPersonSharp size={21} /> <FaChevronDown size={20} />
+            </span>
+            <div className="absolute bg-white border-2 border-gray-200 text-gray-700 rounded-md hidden py-3  group-hover:flex justify-center items-center left-[-100px] right-[-10px] top-[100%] h-auto">
+              <ul className=" text-nowrap w-full list-none flex flex-col gap-1">
+                <li
+                  onClick={() => setShowDetail(true)}
+                  className="text-[15px]  hover:bg-gray-100 duration-300 cursor-pointer p-1"
+                >
+                  Manage Account
+                </li>
+                <li
+                  onClick={logout}
+                  className="text-[15px] w-full  hover:bg-gray-100 duration-300 cursor-pointer p-1"
+                >
+                  Logout
+                </li>
+              </ul>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
+        {showDetail && <AccountDetail closePopup={setShowDetail} />}
       </div>
       {auth && (
         <div className="border-2 text-wrap fixed top-0 left-0 right-0 bottom-0 bg-[#000000d0] flex justify-center items-center z-[222] border-black">
