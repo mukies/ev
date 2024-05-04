@@ -40,7 +40,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="h-[60px]  z-[99] sm:h-[100px] md:sticky top-0 bg-gray-200 flex justify-center sm:gap-20 lg:gap-0 lg:justify-between  lg:px-5 items-center">
+    <nav className="h-[60px] text-gray-700 dark:text-white z-[99] sm:h-[100px] md:sticky top-0 bg-gray-200 flex justify-center sm:gap-20 lg:gap-0 lg:justify-between  lg:px-5 items-center">
       {/* --  */}
       <div
         onClick={() => {
@@ -54,8 +54,8 @@ const Navbar = () => {
           className=" h-[40px] sm:h-[60px] cursor-pointer"
         />
       </div>
-      <div className="hidden lg:flex">
-        <ul className=" flex items-center list-none gap-1 text-xl">
+      <div className="hidden lg:flex ">
+        <ul className=" flex items-center list-none gap-1 text-gray-700 text-xl">
           <li
             onClick={() => navigate("/")}
             className="p-2 hover:bg-gray-300 duration-300 rounded-md cursor-pointer capitalize"
@@ -69,7 +69,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content list-none mt-1 z-[1] text-lg menu p-2 shadow  bg-base-100 rounded-box w-56"
+                className="dropdown-content dark:text-white list-none mt-1 z-[1] text-lg menu p-2 shadow  bg-base-100 rounded-box w-56"
               >
                 <li>
                   <div className="dropdown  dropdown-right">
@@ -144,7 +144,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content mt-1 z-[1] list-none text-lg menu p-2 shadow  bg-base-100 rounded-box w-52"
+                className="dropdown-content dark:text-white mt-1 z-[1] list-none text-lg menu p-2 shadow  bg-base-100 rounded-box w-52"
               >
                 <li>
                   <Link to={"/solution/ac-ev-charger"} role="a">
@@ -166,16 +166,18 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content mt-1 z-[1] menu p-2 list-none shadow text-lg bg-base-100 rounded-box w-52"
+                className="dropdown-content dark:text-white mt-1 z-[1] menu p-2 list-none shadow text-lg bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <a>Company Profile</a>
+                  <Link role="a" to={"/about-us"}>
+                    Company Profile
+                  </Link>
                 </li>
+
                 <li>
-                  <a>News</a>
-                </li>
-                <li>
-                  <a>FAQ</a>
+                  <Link role="a" to={"/faq"}>
+                    FAQ
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -189,7 +191,7 @@ const Navbar = () => {
           </Link>
         </ul>
       </div>
-      <div className="hidden md:flex gap-5 lg:gap-3 items-center">
+      <div className="hidden md:flex gap-5 text-gray-700 lg:gap-3 items-center">
         <Link role="span" to={"/product-search"} className="cursor-pointer">
           <FaSearch size={25} />
         </Link>
@@ -229,8 +231,8 @@ const Navbar = () => {
         ) : (
           ""
         )}
-        {showDetail && <AccountDetail closePopup={setShowDetail} />}
       </div>
+      {showDetail && <AccountDetail closePopup={setShowDetail} />}
       {auth && (
         <div className="border-2 text-wrap fixed top-0 left-0 right-0 bottom-0 bg-[#000000d0] flex justify-center items-center z-[222] border-black">
           {authPage == "l" ? (
@@ -252,7 +254,7 @@ const Navbar = () => {
           !show ? "left-[-1000px]" : "left-[0px]"
         }  bottom-0`}
       >
-        <div className="max-w-max overflow-y-scroll max-h-[100dvh] ">
+        <div className="max-w-max overflow-y-auto overflow-x-hidden max-h-[100dvh] ">
           <ul className="menu min-h-[100dvh]  flex flex-col py-5 rounded-none text-lg bg-base-200 w-80 ">
             <span
               onClick={() => setShow(false)}
@@ -260,7 +262,12 @@ const Navbar = () => {
             >
               <FaTimes />
             </span>
-            <li>
+            <li
+              onClick={() => {
+                navigate("/");
+                setShow(false);
+              }}
+            >
               <a>Home</a>
             </li>
             <li>
@@ -274,7 +281,7 @@ const Navbar = () => {
                         <li
                           onClick={() => {
                             navigate("/product/homeuse-ev-charger");
-                            close();
+                            setShow(false);
                           }}
                         >
                           <a>Homeuse EV Charger</a>
@@ -282,7 +289,7 @@ const Navbar = () => {
                         <li
                           onClick={() => {
                             navigate("/product/public-ev-charger");
-                            close();
+                            setShow(false);
                           }}
                         >
                           <a>Public EV Charger</a>
@@ -290,7 +297,7 @@ const Navbar = () => {
                         <li
                           onClick={() => {
                             navigate("/product/portable-ev-charger");
-                            close();
+                            setShow(false);
                           }}
                         >
                           <a>Portable EV Charger</a>
@@ -298,16 +305,36 @@ const Navbar = () => {
                       </ul>
                     </details>
                   </li>
-                  <li>
+                  <li
+                    onClick={() => {
+                      navigate("/product/dc-charging-station");
+                      setShow(false);
+                    }}
+                  >
                     <a>DC charging station</a>
                   </li>
-                  <li>
+                  <li
+                    onClick={() => {
+                      navigate(`/charging-cable`);
+                      setShow(false);
+                    }}
+                  >
                     <a>Charging Cable</a>
                   </li>
-                  <li>
+                  <li
+                    onClick={() => {
+                      navigate(`/ev-adapter`);
+                      setShow(false);
+                    }}
+                  >
                     <a>EV Adapter</a>
                   </li>
-                  <li>
+                  <li
+                    onClick={() => {
+                      navigate(`/ev-parts`);
+                      setShow(false);
+                    }}
+                  >
                     <a>EV Parts</a>
                   </li>
                 </ul>
@@ -318,10 +345,14 @@ const Navbar = () => {
                 <summary>Solutions</summary>
                 <ul>
                   <li>
-                    <a>AC Charger</a>
+                    <Link to={"/solution/ac-ev-charger"} role="a">
+                      AC Charger
+                    </Link>
                   </li>
                   <li>
-                    <a>DC Charger</a>
+                    <Link role="a" to={"/solution/dc-ev-charger"}>
+                      DC Charger
+                    </Link>
                   </li>
                 </ul>
               </details>
@@ -331,30 +362,57 @@ const Navbar = () => {
                 <summary>About Us</summary>
                 <ul>
                   <li>
-                    <a>Company Profile</a>
+                    <Link role="a" to={"/about-us"}>
+                      Company Profile
+                    </Link>
                   </li>
+
                   <li>
-                    <a>News</a>
-                  </li>
-                  <li>
-                    <a>FAQ</a>
+                    <Link role="a" to={"/faq"}>
+                      FAQ
+                    </Link>
                   </li>
                 </ul>
               </details>
             </li>
             <li>
-              <a>Contact Us</a>
+              <Link role="a" to={"/contact-us"}>
+                Contact Us
+              </Link>
             </li>
-            <li className="md:hidden">
-              <a>
-                <IoPersonSharp /> Login/Register
-              </a>
-            </li>
-            <li className="md:hidden">
-              <a>
+            {!userAuth ? (
+              <li onClick={() => setAuth(true)} className="md:hidden">
+                <a>
+                  <IoPersonSharp /> Login/Register
+                </a>
+              </li>
+            ) : (
+              ""
+            )}
+
+            <li onClick={() => setShow(false)} className="md:hidden">
+              <Link role="a" to={"/product-search"}>
                 <FaSearch /> Search
-              </a>
+              </Link>
             </li>
+            {userAuth ? (
+              <>
+                <li
+                  onClick={() => {
+                    setShowDetail(true);
+                    setShow(false);
+                  }}
+                  className=""
+                >
+                  <a>Manage Account</a>
+                </li>
+                <li onClick={logout} className="md:hidden">
+                  <a>Logout</a>
+                </li>
+              </>
+            ) : (
+              ""
+            )}
           </ul>
         </div>
       </div>

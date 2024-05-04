@@ -7,7 +7,10 @@ function AcSolution() {
       <div>
         <div
           style={{
-            backgroundImage: "url('/ac_solution_bg.webp')",
+            background:
+              "linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('/ac_solution_bg.webp')",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
           }}
           className=" bg-black h-[50vh] sm:h-[60vh] flex items-center  bg-cover text-white sm:text-lg text-[16px] md:text-xl bg-right  "
         >
@@ -28,7 +31,7 @@ function AcSolution() {
               <li className="">2 year warranty</li>
             </ul>
             <div className="flex justify-end w-[300px] sm:w-[400px]">
-              <button className="btn bg-[red] hover:bg-[#ff2e2e] duration-200 text-white border-none">
+              <button className="btn bg-[red] hover:bg-[#ff2e2e] w-full sm:max-w-max duration-200 text-white border-none">
                 Order Now
               </button>
             </div>

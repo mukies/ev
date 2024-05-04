@@ -57,7 +57,9 @@ function ProductPage() {
               className=" flex  text-wrap list-disc sm:list-none  text-title flex-col gap-1 "
             ></div> */}
             <div className="flex justify-center mx-auto w-[300px] sm:w-[400px]">
-              <button className="btn btn-info">Order Now</button>
+              <button className="btn btn-success text-white w-full sm:max-w-max">
+                Order Now
+              </button>
             </div>
           </div>
         </div>
@@ -79,7 +81,7 @@ function ProductPage() {
               dangerouslySetInnerHTML={{ __html: product.shortDescription }}
             ></div>
             <div className="flex justify-center items-center">
-              <button className="btn bg-[red] hover:bg-[#ff4747] text-white ">
+              <button className="btn bg-[red] hover:bg-[#ff4747] w-full sm:max-w-max border-none text-white ">
                 Order Now
               </button>
             </div>
@@ -89,14 +91,18 @@ function ProductPage() {
           dangerouslySetInnerHTML={{ __html: product.mainDescription }}
           className="text-field px-2 mt-5 sm:px-10 sm:mt-10"
         ></div>
-        <div className="sm:w-[80%] w-[95%] my-5 mx-auto h-auto  ">
-          <img
-            src="/features.webp"
-            alt="descriptive-image"
-            className="w-full h-full object-cover object-center "
-            loading="lazy"
-          />
-        </div>
+        {product.descriptiveImage ? (
+          <div className="sm:w-[80%] w-[95%] my-5 mx-auto h-auto  ">
+            <img
+              src={product.descriptiveImage}
+              alt="descriptive-image"
+              className="w-full h-full object-cover object-center "
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          ""
+        )}
         <div className="flex flex-col gap-5 sm:gap-10 sm:flex-row px-1  mt-1 sm:px-10 sm:mt-10">
           <div className="p-3 flex-1 flex bg-gray-200 flex-col border-2 max-h-max border-black rounded-xl">
             <div className="h-[350px] w-full overflow-hidden">

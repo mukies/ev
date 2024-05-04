@@ -62,10 +62,10 @@ const Home = () => {
               <h3 className="text-2xl sm:text-4xl">
                 Contribute to a green future
               </h3>
-              <h1 className="text-2xl mb-4 sm:text-[45px] font-bold">
+              <h1 className="text-2xl mb-4 sm:text-[45px] text-center font-bold">
                 A World-Class EV Charger Manufacturer
               </h1>
-              <p className="text-xl sm:text-2xl">
+              <p className="text-xl sm:text-2xl text-center">
                 The exploration and inovation of EV chargers has lead us from
                 being pioneers to industry leader
               </p>
@@ -186,14 +186,6 @@ const Home = () => {
                   Andrew Robinson, America
                 </span>
               </div>
-              <div className="absolute hidden sm:flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href="#slide3" className="btn btn-circle">
-                  ❮
-                </a>
-                <a href="#slide2" className="btn btn-circle">
-                  ❯
-                </a>
-              </div>
             </div>
             <div id="slide2" className="carousel-item relative w-full">
               <div className="w-full flex text-gray-700 text-wrap flex-col gap-5 py-5 items-center h-full justify-center">
@@ -207,14 +199,6 @@ const Home = () => {
                 <span className="text-xl font-semibold">
                   Melle Van De Buuren, Netherlands
                 </span>
-              </div>
-              <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href="#slide1" className="btn btn-circle">
-                  ❮
-                </a>
-                <a href="#slide3" className="btn btn-circle">
-                  ❯
-                </a>
               </div>
             </div>
             <div id="slide3" className="carousel-item relative w-full">
@@ -235,14 +219,6 @@ const Home = () => {
                 <span className="text-xl font-semibold">
                   Thomas Jähn, Germany
                 </span>
-              </div>
-              <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href="#slide2" className="btn btn-circle">
-                  ❮
-                </a>
-                <a href="#slide1" className="btn btn-circle">
-                  ❯
-                </a>
               </div>
             </div>
           </div>

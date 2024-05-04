@@ -144,3 +144,16 @@ exports.getCategoryWise = async (req, res) => {
     res.json({ success: false, messge: "Error while getting product list." });
   }
 };
+
+exports.searchProduct = async (req, res) => {
+  const { key } = req.params;
+  try {
+    const products = await productModel.find({
+      $or: [{ name: { $regex: key } }, { slug: { $regex: key } }],
+    });
+
+    res.json({ success: true, products });
+  } catch (error) {
+    res.json({ success: false, message: "Error while product search." });
+  }
+};

@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <div className="bg-[#242424] flex flex-col mt-10 gap-1 text-wrap py-5 sm:py-10 sm:px-20 text-gray-200 h-auto sm:h-[45vh]">
+    <div className="bg-[#242424] flex flex-col  gap-1 text-wrap py-5 sm:py-10 sm:px-20 text-gray-200 h-auto sm:h-[45vh]">
       <div className="flex flex-col sm:flex-row gap-5 sm:gap-2 px-4">
         <div className=" flex-1 flex flex-col gap-1  w-full mx-auto">
           <h3 className="text-2xl font-bold">Product</h3>

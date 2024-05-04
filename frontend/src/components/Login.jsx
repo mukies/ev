@@ -52,25 +52,25 @@ function Login({ setAuth, setAuthPage }) {
             </span>
           </div>
           <form onSubmit={(e) => e.preventDefault()} className="card-body">
-            <span className="text-3xl font-bold text-center underline">
+            <span className="text-3xl font-bold text-center dark:text-white underline">
               Login
             </span>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text dark:text-white">Email</span>
               </label>
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 placeholder="email"
-                className="input input-bordered"
+                className="input input-bordered bg-gray-100"
                 required
               />
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text dark:text-white">Password</span>
               </label>
               <div className="flex items-center relative">
                 <input
@@ -89,7 +89,7 @@ function Login({ setAuth, setAuthPage }) {
                 </span>
               </div>
               <label className="label">
-                <span className="label-text-alt ">
+                <span className="label-text-alt dark:text-white">
                   Didn&rsquo;t have an Account ?{" "}
                   <Link
                     onClick={() => setAuthPage("r")}
