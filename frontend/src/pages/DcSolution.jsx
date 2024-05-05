@@ -31,7 +31,7 @@ function DcSolution() {
           <div className="flex flex-col gap-2 items-center">
             <h1 className="text-3xl ">DC EV Car Charging Station</h1>
             <p className="w-[90%] mx-auto text-center text-md">
-              Bomern provide everything that’s needed to build a charging
+              NEST provide everything that’s needed to build a charging
               business, from charging facilities to customer services and smart
               energy management solutions. You can either manage your own
               network of charging stations or provide the service for other

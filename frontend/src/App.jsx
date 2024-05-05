@@ -19,6 +19,7 @@ import PageNotFound from "./pages/PageNotFound";
 import Contact from "./pages/Contact";
 import SearchPage from "./pages/SearchPage";
 import Faq from "./pages/Faq";
+import InquiryPage from "./pages/InquiryPage";
 
 function App() {
   const adminAuth = JSON.parse(localStorage.getItem("_A"));
@@ -37,6 +38,7 @@ function App() {
         <Route path="/solution/dc-ev-charger" element={<DcSolution />} />
         <Route path="/solution/ac-ev-charger" element={<AcSolution />} />
         <Route path="/product-search" element={<SearchPage />} />
+        <Route path="/enquiry-for-products" element={<InquiryPage />} />
 
         <Route element={<AdminProtectedRoute />}>
           <Route path="/admin/product" element={<Products />} />

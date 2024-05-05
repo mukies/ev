@@ -43,7 +43,7 @@ function ACEVcharger() {
 
   return (
     <Layout>
-      <div className="min-h-[calc(100dvh-100px)] text-black flex flex-col">
+      <div className="min-h-[calc(100dvh-100px)] text-black flex flex-col py-5">
         {loading && (
           <div className="fixed top-0 left-0 right-0 bottom-0 bg-white flex z-[89] justify-center items-center">
             <span className="loading loading-spinner scale-125 text-gray-800"></span>

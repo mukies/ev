@@ -29,11 +29,11 @@ function ProductShowcase({ title }) {
       <div className="flex flex-col gap-4 justify-center items-center">
         <h1 className="text-3xl uppercase font-semibold">product showcase</h1>
         <p className="text-md w-[95%] mx-auto">
-          Bomern offers top-tier energy storage systems and EV chargers,
-          providing holistic solutions that seamlessly combine power
-          transmission and distribution, energy storage, and power consumption.
-          All products are durable and high-quality, ensuring outstanding
-          performance and longevity even in harsh environments
+          NEST offers top-tier energy storage systems and EV chargers, providing
+          holistic solutions that seamlessly combine power transmission and
+          distribution, energy storage, and power consumption. All products are
+          durable and high-quality, ensuring outstanding performance and
+          longevity even in harsh environments
         </p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-3 w-full lg:grid-cols-5">

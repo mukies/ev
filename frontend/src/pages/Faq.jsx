@@ -5,7 +5,7 @@ function Faq() {
     {
       question: "Are you a factory or trading company?",
       answer:
-        "We are a factory. Located in Kunshan city, Bomern was founded in 2002 for cable production. Many workers in our factory have been working in this industry for more than 10 years and have rich experience.",
+        "We are a factory. Located in Kunshan city, NEST was founded in 2002 for cable production. Many workers in our factory have been working in this industry for more than 10 years and have rich experience.",
     },
     {
       question: "What’s the MOQ?",
@@ -30,7 +30,7 @@ function Faq() {
     {
       question: "How can you ensure the products quality?",
       answer:
-        "We conduct stress test, waterproof test, IP test and anti-rust testing for each EV charger before shipment, so product quality is fully guaranteed. Bomern features premium and safe products, all of which are with CE, TUV and UL approval to ensure EV charger from Bomern with high performance, reliability and longevity.",
+        "We conduct stress test, waterproof test, IP test and anti-rust testing for each EV charger before shipment, so product quality is fully guaranteed. NEST features premium and safe products, all of which are with CE, TUV and UL approval to ensure EV charger from NEST with high performance, reliability and longevity.",
     },
     {
       question: "What’s your warranty?",

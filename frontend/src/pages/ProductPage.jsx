@@ -1,6 +1,6 @@
 import Layout from "../layout/Layout";
 import "../index.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -81,9 +81,13 @@ function ProductPage() {
               dangerouslySetInnerHTML={{ __html: product.shortDescription }}
             ></div>
             <div className="flex justify-center items-center">
-              <button className="btn bg-[red] hover:bg-[#ff4747] w-full sm:max-w-max border-none text-white ">
+              <Link
+                role="button"
+                to={"/enquiry-for-products"}
+                className="btn bg-[red] hover:bg-[#ff4747] w-full sm:max-w-max border-none text-white "
+              >
                 Order Now
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -185,10 +189,9 @@ function ProductPage() {
                 electric vehicle in response to changes in the electrical load.{" "}
               </p>
               <p>
-                Bomern Dynamic Load Balancing ease of installation. Avoid
-                currents overload and improve on the safety of your
-                installation. Gaining insights into the energy usage of the
-                property.
+                NEST Dynamic Load Balancing ease of installation. Avoid currents
+                overload and improve on the safety of your installation. Gaining
+                insights into the energy usage of the property.
               </p>
             </div>
           </div>

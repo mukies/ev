@@ -1,10 +1,5 @@
 import { BsInstagram } from "react-icons/bs";
-import {
-  RiYoutubeLine,
-  RiFacebookCircleLine,
-  RiLinkedinLine,
-  RiLink,
-} from "react-icons/ri";
+import { RiFacebookCircleLine, RiLinkedinLine, RiLink } from "react-icons/ri";
 import { MdEmail } from "react-icons/md";
 import { IoCall } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -12,7 +7,14 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <div className="bg-[#242424] flex flex-col  gap-1 text-wrap py-5 sm:py-10 sm:px-20 text-gray-200 h-auto sm:h-[45vh]">
-      <div className="flex flex-col sm:flex-row gap-5 sm:gap-2 px-4">
+      <div className="flex flex-col sm:flex-row gap-5 sm:justify-center sm:gap-2 px-4">
+        <div className=" flex-1 flex flex-col gap-1  w-full mx-auto">
+          <img
+            src="/nest.JPG"
+            alt="nest"
+            className="h-[150px] w-[150px] object-cover object-center  rounded-full"
+          />
+        </div>
         <div className=" flex-1 flex flex-col gap-1  w-full mx-auto">
           <h3 className="text-2xl font-bold">Product</h3>
           <ul className="list-none text-[16px]">
@@ -49,13 +51,7 @@ function Footer() {
             >
               <RiFacebookCircleLine size={20} />
             </Link>
-            <Link
-              role="span"
-              to={"#"}
-              className="rounded-full cursor-pointer bg-gray-300 text-black h-8  w-8 flex justify-center items-center"
-            >
-              <RiYoutubeLine size={20} />
-            </Link>
+
             <Link
               role="span"
               to={"#"}
@@ -90,8 +86,8 @@ function Footer() {
       </div>
       <span className="divider divider-neutral"></span>
       <p className="flex gap-3 items-center text-xs sm:text-lg  mx-auto">
-        Copyright © 2016-2022 Jiangsu Bomern Energy Technology Co., Ltd.{" "}
-        <span className="">All Rights Reserved Bomern© 2022</span>
+        Copyright © 2016-2022 Jiangsu NEST Energy Technology Co., Ltd.{" "}
+        <span className="">All Rights Reserved NEST© 2022</span>
       </p>
     </div>
   );

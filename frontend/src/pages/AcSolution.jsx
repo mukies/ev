@@ -43,7 +43,7 @@ function AcSolution() {
               AC ev electric vehicle charging station
             </h3>
             <p className="w-[90%] mx-auto text-center">
-              Bomern charger is not just safe, reliable,and user friendly,
+              NEST charger is not just safe, reliable,and user friendly,
               it&rsquo;s also fully compatible with all types of electric
               vehicles. By installing it at your business, you can attract new
               customers, showing that you’re committed to sustainability.
@@ -215,8 +215,8 @@ function AcSolution() {
           <div className="flex flex-col text-gray-700 flex-[1.7] px-1 gap-4">
             <h3 className="text-xl font-semibold">Charging Optimization</h3>
             <p>
-              Bomern&rsquo;s electric vehicle chargers range from 3.7 kW to 22
-              kW for AC units and up to 240 kW for DC units. Each AC electric
+              NEST&rsquo;s electric vehicle chargers range from 3.7 kW to 22 kW
+              for AC units and up to 240 kW for DC units. Each AC electric
               vehicle charger is available with advanced dynamic load balancing
               (DLB) technology, ensuring excellent efficiency and smarter energy
               management. The DC charger, although powerful, does not include

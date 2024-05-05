@@ -56,9 +56,7 @@ const Home = () => {
                 <span className="h-[2px] bg-white w-4"></span> Since 2017{" "}
                 <span className="h-[2px] bg-white w-4"></span>
               </h3>
-              <h2 className="text-[60px] sm:text-[80px] font-semibold">
-                Bomern
-              </h2>
+              <h2 className="text-[60px] sm:text-[80px] font-semibold">NEST</h2>
               <h3 className="text-2xl sm:text-4xl">
                 Contribute to a green future
               </h3>
@@ -177,8 +175,8 @@ const Home = () => {
                 </h2>
                 <p className="w-[85%] mx-auto text-lg sm:text-xl ">
                   “I am a regular customer and have maintained a good
-                  long-termpartnership with Bomern. In terms of my purchasing
-                  experience, Bomern is a professional team. It offers quality
+                  long-termpartnership with NEST. In terms of my purchasing
+                  experience, NEST is a professional team. It offers quality
                   products at temptingly low prices alongside the attentive
                   service.”
                 </p>
@@ -191,10 +189,10 @@ const Home = () => {
               <div className="w-full flex text-gray-700 text-wrap flex-col gap-5 py-5 items-center h-full justify-center">
                 <h2 className="text-3xl font-bold">WHAT OUR CLIENTS SAY</h2>
                 <p className="w-[85%] mx-auto text-xl">
-                  “I customized an EV charger at Bomern. The design and quality
+                  “I customized an EV charger at NEST. The design and quality
                   exceededmy expectations, making me extremely satisfied.
                   Moreover, the charger is very practical and easy to operate. I
-                  highly recommend purchasing Bomern&rsquo;s products.”
+                  highly recommend purchasing NEST&rsquo;s products.”
                 </p>
                 <span className="text-xl font-semibold">
                   Melle Van De Buuren, Netherlands
@@ -207,14 +205,14 @@ const Home = () => {
                   WHAT OUR CLIENTS SAY
                 </h2>
                 <p className="w-[85%] mx-auto text-md md:text-xl">
-                  “I customized a batch of enclosure boxes at Bomern for my
+                  “I customized a batch of enclosure boxes at NEST for my
                   company&rsquo;scharging piles. The most satisfying thing for
                   me is the positive and efficient way they solve the problems.
                   Because what I care is how they address the issue, not the
                   problem itself. A good partner does not only provide customers
                   with appropriate products, but also face problems together and
                   respond to the market swiftly, which is the basis forlong-term
-                  cooperation. Bomern, I do believe, will continue to excel.”
+                  cooperation. NEST, I do believe, will continue to excel.”
                 </p>
                 <span className="text-xl font-semibold">
                   Thomas Jähn, Germany

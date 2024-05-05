@@ -1,4 +1,7 @@
 import Layout from "../layout/Layout";
+import { FaLocationDot } from "react-icons/fa6";
+import { FaMobileScreenButton } from "react-icons/fa6";
+import { MdMail } from "react-icons/md";
 
 const Contact = () => {
   return (
@@ -35,7 +38,7 @@ const Contact = () => {
               </p>
             </div>
           </div>
-          <div className="w-[80%] flex gap-2 items-center mx-auto">
+          <div className="w-[80%] flex gap-2 items-center  mx-auto">
             <div className=" flex-1 ">
               <div className="card shrink-0 w-full max-w-sm shadow-2xl ">
                 <form className="card-body text-black">
@@ -67,7 +70,17 @@ const Contact = () => {
                 </form>
               </div>
             </div>
-            <div className="border-2 border-red-300 flex-1">right</div>
+            <div className="flex-1  flex gap-3 flex-col">
+              <div className="flex items-center gap-2">
+                <FaLocationDot /> <span>Bharatpur, Chitwan, Nepal</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaMobileScreenButton /> <span>+977 987654321</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MdMail /> <span>test@test.com</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
