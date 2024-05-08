@@ -49,9 +49,9 @@ const Navbar = () => {
         className="z-20 cursor-pointer"
       >
         <img
-          src="/nest.JPG"
+          src="/transparent_logo.png"
           alt="logo"
-          className=" h-[40px] sm:h-[100px] mix-blend-multiply rounded-full cursor-pointer"
+          className=" h-[40px] sm:h-[60px]  cursor-pointer"
         />
       </div>
       <div className="hidden lg:flex ">

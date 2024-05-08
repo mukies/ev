@@ -93,7 +93,17 @@ function SearchPage() {
             {products.length ? (
               products.map((product, i) => (
                 <div
-                  onClick={() => navigate(`/product-page/${product.slug}`)}
+                  onClick={() => {
+                    if (
+                      product.category == "charging-cable" ||
+                      product.category == "ev-adapter" ||
+                      product.category == "ev-parts"
+                    ) {
+                      navigate(`/enquiry-for-products`);
+                    } else {
+                      navigate(`/product-page/${product.slug}`);
+                    }
+                  }}
                   className="p-2 flex items-center gap-3 sm:w-[90%] sm:mx-auto border-2 border-gray-300 rounded-lg hover:bg-gray-300 duration-300 cursor-pointer"
                   key={i}
                 >

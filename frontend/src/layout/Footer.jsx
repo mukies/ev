@@ -3,6 +3,7 @@ import { RiFacebookCircleLine, RiLinkedinLine, RiLink } from "react-icons/ri";
 import { MdEmail } from "react-icons/md";
 import { IoCall } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { FaLocationDot } from "react-icons/fa6";
 
 function Footer() {
   return (
@@ -17,31 +18,41 @@ function Footer() {
         </div>
         <div className=" flex-1 flex flex-col gap-1  w-full mx-auto">
           <h3 className="text-2xl font-bold">Product</h3>
-          <ul className="list-none text-[16px]">
-            <li>AC Wallbox</li>
-            <li>DC Charging Station</li>
-            <li>Portable EV Charger</li>
-            <li>EV Charging Cable</li>
+          <ul className="list-none text-[16px] flex flex-col">
+            <Link role="li" to={"/"}>
+              AC Wallbox
+            </Link>
+            <Link role="li" to={"/dc-charging-station"}>
+              DC Charging Station
+            </Link>
+            <Link role="li" to={"/"}>
+              Portable EV Charger
+            </Link>
+            <Link role="li" to={"/"}>
+              EV Charging Cable
+            </Link>
           </ul>
         </div>
         <div className=" flex-1 flex flex-col gap-1  w-full mx-auto">
           <h3 className="text-2xl font-bold">About Us</h3>
-          <ul className="list-none text-[16px]">
-            <li>Company Profile</li>
-            <li>FAQ</li>
+          <ul className="list-none flex flex-col text-[16px]">
+            <Link
+              role="li"
+              to={"/about-us"}
+              className="hover:underline duration-500 max-w-max"
+            >
+              Company Profile
+            </Link>
+            <Link
+              role="li"
+              to={"/faq"}
+              className="hover:underline duration-500 max-w-max"
+            >
+              FAQ
+            </Link>
           </ul>
         </div>
-        <div className="flex-1 flex flex-col gap-1 mx-auto w-full">
-          <h3 className="text-2xl font-bold">Contact Us</h3>
-          <ul className="list-none text-[16px]">
-            <li className="font-semibold">
-              Whats app <span className="font-normal">+123456789</span>
-            </li>
-            <li className="font-semibold">
-              Email: <span className="font-normal">abc@abc.com</span>
-            </li>
-          </ul>
-        </div>
+
         <div className=" flex-1 flex flex-col gap-5 w-full  mx-0 sm:mx-auto">
           <div className="flex justify-between w-[60%] items-center mx-auto sm:mx-0 ">
             <Link
@@ -76,18 +87,20 @@ function Footer() {
           </div>
           <div className="flex flex-col mx-auto sm:mx-0 gap-2">
             <span className="flex items-center gap-4">
-              <IoCall size={20} /> +1234567890
+              <IoCall size={20} /> +977 9855060106
             </span>
             <span className="flex items-center gap-4">
-              <MdEmail size={20} /> abc@abc.com
+              <MdEmail size={20} /> nepqlevsat@gmail.com
+            </span>
+            <span className="flex items-center gap-4">
+              <FaLocationDot /> Bharatpur, Chitwan
             </span>
           </div>
         </div>
       </div>
       <span className="divider divider-neutral"></span>
       <p className="flex gap-3 items-center text-xs sm:text-lg  mx-auto">
-        Copyright © 2016-2022 Jiangsu NEST Energy Technology Co., Ltd.{" "}
-        <span className="">All Rights Reserved NEST© 2022</span>
+        All Rights Reserved NEST© 2022
       </p>
     </div>
   );

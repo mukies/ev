@@ -14,6 +14,13 @@ function InquiryPage() {
               leave a message
             </p>
           </div>
+          <div className=" h-[300px] flex justify-center w-auto overflow-hidden">
+            <img
+              src="/black_logo.png"
+              alt="nest icon"
+              className="h-full w-auto  rounded-3xl"
+            />
+          </div>
           <p className="sm:text-2xl text-xl text-center">
             Committed to brand communication, We goes deep into the global
             layout to promote premium products and superb service to every

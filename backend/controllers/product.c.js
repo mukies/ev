@@ -149,7 +149,7 @@ exports.searchProduct = async (req, res) => {
   const { key } = req.params;
   try {
     const products = await productModel.find({
-      $or: [{ name: { $regex: key } }, { slug: { $regex: key } }],
+      $or: [{ name: { $regex: key } }, { slug: { $regex: key.toLowerCase() } }],
     });
 
     res.json({ success: true, products });

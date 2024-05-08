@@ -166,7 +166,7 @@ const Home = () => {
           </div>
         </div>
         {/* crousel */}
-        <div className="sm:px-10 hidden sm:flex  flex-col h-[50vh] mt-10">
+        <div className="sm:px-10 hidden sm:flex text-gray-700 flex-col h-[50vh] mt-10">
           <div className="carousel w-full h-full bg-gray-200 rounded-lg">
             <div id="slide1" className="carousel-item relative w-full">
               <div className="w-full flex text-gray-700 text-wrap flex-col gap-5 sm:py-5 items-center h-full justify-center">

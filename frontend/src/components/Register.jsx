@@ -72,38 +72,38 @@ function Register({ setAuth, setAuthPage }) {
             onSubmit={(e) => e.preventDefault()}
             className="card-body gap-[5px]"
           >
-            <span className="text-3xl font-bold text-center underline">
+            <span className="text-3xl dark:text-white font-bold text-center underline">
               Register
             </span>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Full Name</span>
+                <span className="label-text dark:text-white">Full Name</span>
               </label>
               <input
                 type="text"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 placeholder="full name"
-                className="input input-bordered"
+                className="input input-bordered bg-gray-100"
                 required
               />
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text dark:text-white">Email</span>
               </label>
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 placeholder="email"
-                className="input input-bordered"
+                className="input input-bordered bg-gray-100"
                 required
               />
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text dark:text-white">Password</span>
               </label>
               <div className="flex items-center relative">
                 <input
@@ -122,13 +122,12 @@ function Register({ setAuth, setAuthPage }) {
                 </span>
               </div>
               <label className="label">
-                <span className="label-text-alt ">
+                <span className="label-text-alt dark:text-white ">
                   Already have an Account ?{" "}
                   <Link
                     onClick={() => setAuthPage("l")}
                     role="a"
                     className="link link-primary"
-                    to={"#"}
                   >
                     Login
                   </Link>

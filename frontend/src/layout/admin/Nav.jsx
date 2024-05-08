@@ -19,7 +19,7 @@ function Nav() {
   };
 
   return (
-    <nav className="h-[60px]  z-[99] sm:h-[100px] md:sticky top-0 bg-gray-200 flex justify-center sm:gap-20 lg:gap-0 lg:justify-between  lg:px-10 items-center">
+    <nav className="h-[60px]  z-[99] sm:h-[100px] text-gray-700 md:sticky top-0 bg-gray-200 flex justify-center sm:gap-20 lg:gap-0 lg:justify-between  lg:px-10 items-center">
       {/* --  */}
       <div
         onClick={() => {
@@ -28,13 +28,13 @@ function Nav() {
         className="z-20 cursor-pointer"
       >
         <img
-          src="/logo.webp"
+          src="/transparent_logo.png"
           alt="logo"
-          className=" h-[40px] sm:h-[60px] cursor-pointer"
+          className=" h-[40px] sm:h-[60px]  cursor-pointer"
         />
       </div>
       <div className="hidden lg:flex">
-        <ul className=" flex items-center list-none gap-1 text-xl">
+        <ul className=" flex items-center list-none  gap-1 text-xl">
           <Link
             to={"/"}
             role="li"
