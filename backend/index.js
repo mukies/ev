@@ -5,6 +5,7 @@ const cors = require("cors");
 const productRoute = require("./routes/product");
 const adminRoute = require("./routes/admin");
 const userRoute = require("./routes/users");
+const inquiryRoute = require("./routes/inquiry");
 const cookie = require("cookie-parser");
 require("dotenv").config();
 require("./db/db.config");
@@ -26,6 +27,7 @@ v2.config({
 app.use("/api/product", productRoute);
 app.use("/api/admin", adminRoute);
 app.use("/api/user", userRoute);
+app.use("/api/inquiry", inquiryRoute);
 
 const port = process.env.PORT || 8080;
 
