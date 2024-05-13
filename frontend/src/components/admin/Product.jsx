@@ -2,15 +2,13 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Delete from "../popup/Delete";
-import { useProduct } from "../../context/ProductContext";
 import axios from "axios";
 import { toast } from "react-toastify";
+import DeletePopup from "../popup/DeletePopup";
 
-function Product({ product }) {
+function Product({ product, setProduct }) {
   const [showPopup, setShowPopup] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { setProduct } = useProduct();
   const handleDelete = async () => {
     if (!loading) {
       setLoading(true);
@@ -79,7 +77,7 @@ function Product({ product }) {
           )}
         </button>
       </div>
-      {showPopup && <Delete cancel={setShowPopup} action={handleDelete} />}
+      {showPopup && <DeletePopup cancel={setShowPopup} action={handleDelete} />}
     </div>
   );
 }

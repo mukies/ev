@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import LayoutAdmin from "../../layout/admin/LayoutAdmin";
 import { MdAddBox } from "react-icons/md";
 import Product from "../../components/admin/Product";
-import { useProduct } from "../../context/ProductContext";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 
 function Products() {
-  const { product, setProduct } = useProduct();
+  // const { product, setProduct } = useProduct();
+  const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -57,7 +57,9 @@ function Products() {
         </div>
         <div className="flex flex-col gap-4">
           {product.length
-            ? product.map((item, i) => <Product key={i} product={item} />)
+            ? product.map((item, i) => (
+                <Product key={i} product={item} setProduct={setProduct} />
+              ))
             : ""}
           {product.length == 0 ? (
             <div className="h-[30vh] flex justify-center items-center ">

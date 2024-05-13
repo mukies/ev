@@ -20,6 +20,8 @@ import Contact from "./pages/Contact";
 import SearchPage from "./pages/SearchPage";
 import Faq from "./pages/Faq";
 import InquiryPage from "./pages/InquiryPage";
+import InquiryPageAdmin from "./pages/admin/InquiryPage";
+import SearchPageAdmin from "./pages/admin/SearchPageAdmin";
 
 function App() {
   const adminAuth = JSON.parse(localStorage.getItem("_A"));
@@ -27,7 +29,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={adminAuth ? <AdminHome /> : <Home />} />
-        <Route path="/ev-admin" element={<AdminAuth />} />
+        <Route path="/nest-admin" element={<AdminAuth />} />
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/product/:id" element={<ACEVcharger />} />
         <Route path="/product-page/:id" element={<ProductPage />} />
@@ -42,7 +44,9 @@ function App() {
 
         <Route element={<AdminProtectedRoute />}>
           <Route path="/admin/product" element={<Products />} />
+          <Route path="/admin/inquiries" element={<InquiryPageAdmin />} />
           <Route path="/admin/user" element={<Users />} />
+          <Route path="/admin/search-product" element={<SearchPageAdmin />} />
           <Route path="/admin/add-product" element={<CreateProduct />} />
           <Route path="/admin/product/:id" element={<EditProduct />} />
         </Route>

@@ -14,10 +14,30 @@ exports.sendMail = async (name, email, location, phone, detail, res) => {
 
     let mailOptions = {
       from: process.env.NODE_MAILER_EMAIL_ID,
-      to: "muk.yess@gmail.com",
+      to: "nepalevsat@gmail.com",
       subject: "Inquiry for EV Product",
       //   text: "sHi from your nodemailer project",
-      html: `<div style=''> <span>You have new Inquiry for Product</span> <div style='border: 2px solid gray, padding:5px'><p style=''>Name: ${name}</p><p style=''>Email: ${email}</p><p style=''>Phone: ${phone}</p></div>  </div>`,
+      html: `<div style=''>
+      <p>Hello NEST,</p>
+      <p>You've got a new product inquiry from ${name.toUpperCase()}:</p>
+      <div style='padding: 12px; border-left: 4px solid #d0d0d0;font-style: italic; '>
+      <p style='text-transform: capitalize;'>
+      <b>Name:</b> ${name}
+      </p>
+      <p>
+      <b>Email:</b> ${email}
+      </p><p style='text-transform: capitalize;'>
+       <b>Location:</b> ${location}
+      </p><p>
+      <b>Phone:</b> ${phone}
+      </p><p>
+       <b>Requirement:</b> ${detail}
+      </p>
+      </div>
+      <p>
+        Thank You !
+      </p>
+      </div>`,
     };
 
     transporter.sendMail(mailOptions, function (err, data) {
@@ -28,6 +48,6 @@ exports.sendMail = async (name, email, location, phone, detail, res) => {
       }
     });
   } catch (error) {
-    res.json({ success: false, message: "Error while sending inquiry mail." });
+    res.json({ success: false, message: "Error while sending inquiry email." });
   }
 };

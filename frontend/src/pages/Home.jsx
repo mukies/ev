@@ -173,7 +173,7 @@ const Home = () => {
                 <h2 className=" text-2xl sm:text-3xl font-bold">
                   WHAT OUR CLIENTS SAY
                 </h2>
-                <p className="w-[85%] mx-auto text-lg sm:text-xl ">
+                <p className="w-[85%] mx-auto text-lg sm:text-xl">
                   “I am a regular customer and have maintained a good
                   long-termpartnership with NEST. In terms of my purchasing
                   experience, NEST is a professional team. It offers quality

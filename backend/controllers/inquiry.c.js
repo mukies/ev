@@ -11,6 +11,7 @@ exports.addInquiry = async (req, res) => {
     });
 
   try {
+    await sendMail(name, email, location, phone, detail, res);
     const inquiry = new inquiryModel({
       name,
       email,
@@ -18,7 +19,6 @@ exports.addInquiry = async (req, res) => {
       phone,
       requirement: detail,
     });
-    await sendMail(name, email, location, phone, detail, res);
     await inquiry.save();
     res.json({ success: true, message: "Inquiry submitted." });
   } catch (error) {
@@ -26,14 +26,9 @@ exports.addInquiry = async (req, res) => {
   }
 };
 
-exports.test = async (req, res) => {
-  await sendMail("mukesh", "mukesh", "mukesh", "mukesh", "mukesh", res);
-  res.json({ status: "ok" });
-};
-
 exports.removeInquiry = async (req, res) => {
   try {
-    await inquiryModel.findByIdAndDelete(req.param.id);
+    await inquiryModel.findByIdAndDelete(req.params.id);
     res.json({ success: true, message: "Inquiry deleted." });
   } catch (error) {
     res.json({ success: false, message: "Error while deleting inquiry." });
@@ -41,9 +36,14 @@ exports.removeInquiry = async (req, res) => {
 };
 
 exports.getInquiry = async (req, res) => {
+  const page = req.query.page;
   try {
-    const inquiries = await inquiryModel.find().sort({ createdAt: -1 });
-    res.json({ success: true, inquiries });
+    const total = (await inquiryModel.find()).length;
+    const inquiries = await inquiryModel
+      .find()
+      .sort({ createdAt: -1 })
+      .limit(4 * page);
+    res.json({ success: true, isMore: total > inquiries.length, inquiries });
   } catch (error) {
     res.json({ success: false, message: "Error while getting inquiries." });
   }

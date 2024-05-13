@@ -102,3 +102,28 @@ exports.logout = async (req, res) => {
     .cookie("jwt", "", { maxAge: 0 })
     .json({ success: true, message: "logout successfull." });
 };
+
+exports.getUsers = async (req, res) => {
+  try {
+    const total = (await userModel.find()).length;
+    const users = await userModel
+      .find()
+      .select("-password")
+      .sort({ createdAt: -1 })
+      .limit(5 * req.query.page);
+
+    res.json({ success: true, users, isMore: total > users.length });
+  } catch (error) {
+    res.json({ success: false, message: "Error while getting users list." });
+  }
+};
+
+exports.getSingleUser = async (req, res) => {
+  try {
+    const user = await userModel.findById(req.params.id).select("fullName");
+
+    res.json({ success: true, user });
+  } catch (error) {
+    res.json({ success: false, message: "Error while fetching user details" });
+  }
+};

@@ -52,6 +52,13 @@ function Nav() {
 
           <Link
             role="li"
+            to={"/admin/inquiries"}
+            className="p-2 hover:bg-gray-300 duration-300 rounded-md cursor-pointer capitalize"
+          >
+            Inquiries
+          </Link>
+          <Link
+            role="li"
             to={"/admin/user"}
             className="p-2 hover:bg-gray-300 duration-300 rounded-md cursor-pointer capitalize"
           >
@@ -60,16 +67,20 @@ function Nav() {
         </ul>
       </div>
       <div className="hidden md:flex gap-5 lg:gap-10 items-center">
-        <span className="cursor-pointer">
+        <Link
+          role="span"
+          to={"/admin/search-product"}
+          className="cursor-pointer"
+        >
           <FaSearch size={25} />
-        </span>
+        </Link>
         <span onClick={logout} className="btn ">
           {/* <FaSearch size={25} /> */}Logout
         </span>
       </div>
 
       {/* --------  */}
-      <div className=" z-[90] fixed  sm:top-[25px] top-[15px] left-3  lg:hidden">
+      <div className=" z-[90] fixed   sm:top-[25px] top-[15px] left-3  lg:hidden">
         <span onClick={() => setShow(true)} className="btn sm:btn-md btn-sm  ">
           <FaBars size={20} />
         </span>
@@ -80,7 +91,7 @@ function Nav() {
           !show ? "left-[-1000px]" : "left-[0px]"
         }  bottom-0`}
       >
-        <div className="max-w-max overflow-y-scroll max-h-[100dvh] ">
+        <div className="max-w-max dark:text-white overflow-y-scroll max-h-[100dvh] ">
           <ul className="menu min-h-[100dvh]  flex flex-col py-5 rounded-none text-lg bg-base-200 w-80 ">
             <span
               onClick={() => setShow(false)}
@@ -100,15 +111,20 @@ function Nav() {
               </Link>
             </li>
             <li>
+              <Link role="li" to={"/admin/inquiries"}>
+                Inquiries
+              </Link>
+            </li>
+            <li>
               <Link role="li" to={"/admin/user"}>
                 Users
               </Link>
             </li>
 
             <li className="md:hidden">
-              <a>
+              <Link role="a" to={"/admin/search-product"}>
                 <FaSearch /> Search
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

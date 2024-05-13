@@ -1,21 +1,36 @@
 import { Link, useNavigate } from "react-router-dom";
 import LayoutAdmin from "../../layout/admin/LayoutAdmin";
+import { useEffect } from "react";
+import { useUserDetails } from "../../hooks/getUserDetails";
 
 function AdminHome() {
   const navigate = useNavigate();
+  const adminAuth = JSON.parse(localStorage.getItem("_A"));
+  const { userDetails, loading, user } = useUserDetails();
+  useEffect(() => {
+    userDetails(adminAuth);
+  }, []);
+
   return (
     <LayoutAdmin>
       <div className="max-w-[768px] flex flex-col mx-auto border-l-2 text-gray-700 text-wrap border-r-2 border-gray-300 min-h-[calc(100vh-100px)] sm:min-h-[calc(80vh-100px)]">
         <div className="flex justify-center items-center flex-col py-10">
-          <span className="text-3xl sm:text-5xl font-semibold">
-            Hello Mukesh
-          </span>
+          {loading ? (
+            <span className="loading loading-dots"></span>
+          ) : (
+            <span
+              onClick={() => console.log("user", user)}
+              className="text-3xl sm:text-5xl font-semibold"
+            >
+              Hello {user?.fullName}
+            </span>
+          )}
           <span className="text-2xl font-semibold text-[red] underline">
             Welcome to Admin Panel
           </span>
           <span className="divider divider-accent"></span>
         </div>
-        <div className="flex flex-col p-5 items-center sm:flex-row gap-5 h-auto justify-center">
+        <div className="flex flex-col p-5 items-center sm:flex-row gap-2 h-auto justify-center">
           <div className="flex-1  flex flex-col">
             <div className="h-[300px] border-2 border-gray-400 rounded-lg overflow-hidden">
               <img
@@ -31,7 +46,25 @@ function AdminHome() {
               to={"/admin/product"}
               className="btn btn-accent "
             >
-              Manage Product
+              Products
+            </Link>
+          </div>
+          <div className="flex-1  flex flex-col">
+            <div className="h-[300px] border-2 border-gray-400 rounded-lg overflow-hidden">
+              <img
+                onClick={() => navigate("/admin/inquiries")}
+                src="/inquiry.png"
+                alt="inquiry-png"
+                className="h-auto w-auto  sm:hover:scale-110 cursor-pointer duration-200"
+              />
+            </div>
+            <span className="divider divider-primary opacity-10"></span>
+            <Link
+              role="button"
+              to={"/admin/inquiries"}
+              className="btn btn-accent "
+            >
+              Inquiries
             </Link>
           </div>
           <div className="flex-1  flex flex-col">
@@ -39,13 +72,13 @@ function AdminHome() {
               <img
                 onClick={() => navigate("/admin/user")}
                 src="/user.png"
-                alt="product-png"
+                alt="user-icon-png"
                 className="h-auto w-auto  sm:hover:scale-110 cursor-pointer duration-200"
               />
             </div>
             <span className="divider divider-primary opacity-10"></span>
             <Link role="button" to={"/admin/user"} className="btn btn-accent ">
-              Manage Users
+              Users
             </Link>
           </div>
         </div>
