@@ -54,7 +54,7 @@ function InquiryPage() {
   return (
     <Layout>
       <div className="text-gray-700 flex flex-col sm:flex-row sm:px-10  py-5 ">
-        {show && <Thankyou closePopup={setShow} />}
+        {show && <Thankyou title={"inquiry"} closePopup={setShow} />}
         <div className="flex-1 flex flex-col justify-center gap-10 px-1">
           <div className="flex flex-col gap-5">
             <h1 className="sm:text-5xl text-4xl text-center font-bold uppercase">

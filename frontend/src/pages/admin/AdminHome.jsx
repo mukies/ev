@@ -1,15 +1,62 @@
 import { Link, useNavigate } from "react-router-dom";
 import LayoutAdmin from "../../layout/admin/LayoutAdmin";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useUserDetails } from "../../hooks/getUserDetails";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 function AdminHome() {
   const navigate = useNavigate();
   const adminAuth = JSON.parse(localStorage.getItem("_A"));
   const { userDetails, loading, user } = useUserDetails();
+  const [oldPass, setOldPass] = useState("");
+  const [newPass, setNewPass] = useState("");
+  const [confirmPass, setConfirmPass] = useState("");
+  const [passwordChangeLoading, setPasswordChangeLoading] = useState(false);
+  const [showPass, setShowPass] = useState(false);
+
   useEffect(() => {
     userDetails(adminAuth);
   }, []);
+
+  const handleChangePassword = async () => {
+    if (!oldPass || !newPass || !confirmPass) {
+      toast.error("Input fields shouldn't be empty.");
+      return;
+    }
+    if (newPass !== confirmPass) {
+      toast.error("Password did't match.");
+      return;
+    }
+
+    if (newPass.length < 6) {
+      toast.error("New password must be at least 6 character long.");
+      return;
+    }
+
+    if (!passwordChangeLoading) {
+      setPasswordChangeLoading(true);
+      try {
+        const { data } = await axios.put("/api/admin/change-password", {
+          oldPass,
+          newPass,
+        });
+
+        if (data.success) {
+          toast.success("Password has been changed.");
+          setOldPass("");
+          setNewPass("");
+          setConfirmPass("");
+        } else {
+          toast.error(data.message);
+        }
+      } catch (error) {
+        toast.error(error);
+      } finally {
+        setPasswordChangeLoading(false);
+      }
+    }
+  };
 
   return (
     <LayoutAdmin>
@@ -20,9 +67,10 @@ function AdminHome() {
           ) : (
             <span
               onClick={() => console.log("user", user)}
-              className="text-3xl sm:text-5xl font-semibold"
+              className="text-3xl sm:text-5xl font-semibold capitalize"
             >
-              Hello {user?.fullName}
+              Hello {user?.fullName?.substr(0, 9)}
+              {user?.fullName?.length > 8 ? "..." : ""}
             </span>
           )}
           <span className="text-2xl font-semibold text-[red] underline">
@@ -55,7 +103,7 @@ function AdminHome() {
                 onClick={() => navigate("/admin/inquiries")}
                 src="/inquiry.png"
                 alt="inquiry-png"
-                className="h-auto w-auto  sm:hover:scale-110 cursor-pointer duration-200"
+                className="h-full w-full object-cover object-center sm:hover:scale-110 cursor-pointer duration-200"
               />
             </div>
             <span className="divider divider-primary opacity-10"></span>
@@ -73,7 +121,7 @@ function AdminHome() {
                 onClick={() => navigate("/admin/user")}
                 src="/user.png"
                 alt="user-icon-png"
-                className="h-auto w-auto  sm:hover:scale-110 cursor-pointer duration-200"
+                className="h-full w-full object-cover object-center sm:hover:scale-110 cursor-pointer duration-200"
               />
             </div>
             <span className="divider divider-primary opacity-10"></span>
@@ -97,7 +145,9 @@ function AdminHome() {
                     </span>
                   </label>
                   <input
-                    type="password"
+                    value={oldPass}
+                    onChange={(e) => setOldPass(e.target.value)}
+                    type={showPass ? "text" : "password"}
                     placeholder="old password"
                     className="input input-bordered bg-gray-100"
                     required
@@ -110,7 +160,9 @@ function AdminHome() {
                     </span>
                   </label>
                   <input
-                    type="password"
+                    value={newPass}
+                    onChange={(e) => setNewPass(e.target.value)}
+                    type={showPass ? "text" : "password"}
                     placeholder="new password"
                     className="input input-bordered bg-gray-100"
                     required
@@ -123,15 +175,36 @@ function AdminHome() {
                     </span>
                   </label>
                   <input
-                    type="password"
+                    value={confirmPass}
+                    onChange={(e) => setConfirmPass(e.target.value)}
+                    type={showPass ? "text" : "password"}
                     placeholder="confirm password"
                     className="input input-bordered bg-gray-100"
                     required
                   />
                 </div>
+                <label
+                  htmlFor="checkBox"
+                  className="flex items-center gap-2 cursor-pointer max-w-max"
+                >
+                  <input
+                    onChange={(e) => setShowPass(e.target.checked)}
+                    id="checkBox"
+                    type="checkbox"
+                    className="checkbox-success  checkbox"
+                  />
+                  <span>show password</span>
+                </label>
                 <div className="form-control mt-5">
-                  <button className="btn btn-primary text-white capitalize">
-                    change password
+                  <button
+                    onClick={handleChangePassword}
+                    className="btn btn-primary text-white capitalize"
+                  >
+                    {passwordChangeLoading ? (
+                      <span className="loading loading-spinner"></span>
+                    ) : (
+                      "change password"
+                    )}
                   </button>
                 </div>
               </form>

@@ -17,7 +17,9 @@ function SearchPageAdmin() {
 
     if (!loading) {
       try {
-        const { data } = await axios.get(`/api/product/product-search/${key}`);
+        const { data } = await axios.get(
+          `/api/product/product-search-admin/${key}`
+        );
 
         if (data.success) {
           setProducts(data.products);
@@ -34,15 +36,15 @@ function SearchPageAdmin() {
   return (
     <LayoutAdmin>
       <div
-        className={`min-h-[40vh] text-gray-700 py-5 sm:min-h-[calc(80vh-100px)] max-w-[768px] mx-auto flex flex-col gap-3 ${
+        className={`min-h-[calc(90vh-60px)] text-gray-700 py-5 sm:min-h-[calc(80vh-100px)] max-w-[768px] mx-auto flex flex-col gap-3 ${
           products ? "" : "justify-center items-center"
         }`}
       >
-        <div className="text-2xl font-semibold flex flex-col gap-3 sm:w-[85%] sm:mx-auto">
+        <div className="text-2xl px-3 font-semibold flex flex-col gap-3 sm:w-[85%] sm:mx-auto">
           <span className="text-3xl font-semibold underline text-center">
             Search Product
           </span>
-          <label className="input input-bordered border-gray-300 bg-gray-100 flex items-center gap-2">
+          <label className="input  input-bordered border-gray-300 bg-gray-100 flex items-center gap-2">
             <input
               value={key}
               onKeyDown={(e) => {

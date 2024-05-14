@@ -157,3 +157,20 @@ exports.searchProduct = async (req, res) => {
     res.json({ success: false, message: "Error while product search." });
   }
 };
+
+exports.searchProductAdmin = async (req, res) => {
+  const { key } = req.params;
+  try {
+    const products = await productModel.find({
+      $or: [
+        { name: { $regex: key } },
+        { category: { $regex: key.replaceAll(/ /g, "-") } },
+        { slug: { $regex: key.toLowerCase() } },
+      ],
+    });
+
+    res.json({ success: true, products });
+  } catch (error) {
+    res.json({ success: false, message: "Error while product search." });
+  }
+};

@@ -1,9 +1,50 @@
+import { useState } from "react";
 import Layout from "../layout/Layout";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaMobileScreenButton } from "react-icons/fa6";
 import { MdMail } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import Thankyou from "../components/popup/Thankyou";
+import axios from "axios";
 
 const Contact = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const handleContact = async () => {
+    if (!name || !email || !message) {
+      toast.error("Please fill the form properly.");
+      return;
+    }
+
+    if (!loading) {
+      try {
+        setLoading(true);
+        const { data } = await axios.post("/api/user/contact-message", {
+          name,
+          email,
+          message,
+        });
+        if (data.success) {
+          setShow(true);
+          setName("");
+          setEmail("");
+          setMessage("");
+        } else {
+          toast.error(data.message);
+        }
+      } catch (error) {
+        toast.error(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
   return (
     <Layout>
       <div
@@ -16,6 +57,7 @@ const Contact = () => {
         }}
         className="text-white min-h-[calc(100vh-100px)] flex justify-center items-center"
       >
+        {show && <Thankyou title={"contact"} closePopup={setShow} />}
         <div
           style={{
             background:
@@ -41,9 +83,14 @@ const Contact = () => {
           <div className="w-[80%] flex gap-2 items-center  mx-auto">
             <div className=" flex-1 ">
               <div className="card shrink-0 w-full max-w-sm shadow-2xl ">
-                <form className="card-body text-black">
+                <form
+                  onSubmit={(e) => e.preventDefault()}
+                  className="card-body text-black"
+                >
                   <div className="form-control">
                     <input
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       type="text"
                       placeholder="Name"
                       className="input input-bordered bg-gray-100"
@@ -52,6 +99,8 @@ const Contact = () => {
                   </div>
                   <div className="form-control">
                     <input
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       type="email"
                       placeholder="Email"
                       className="input input-bordered bg-gray-100"
@@ -60,26 +109,48 @@ const Contact = () => {
                   </div>
                   <div className="form-control">
                     <textarea
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
                       className="textarea textarea-bordered bg-gray-100"
                       placeholder="Message"
                     ></textarea>
                   </div>
                   <div className="form-control ">
-                    <button className="btn btn-primary">Submit</button>
+                    <button onClick={handleContact} className="btn btn-primary">
+                      {loading ? (
+                        <span className="loading loading-spinner"></span>
+                      ) : (
+                        "Submit"
+                      )}
+                    </button>
                   </div>
                 </form>
               </div>
             </div>
             <div className="flex-1  flex gap-3 flex-col">
               <div className="flex items-center gap-2">
-                <FaLocationDot /> <span>Bharatpur, Chitwan, Nepal</span>
+                <FaLocationDot /> <span>Bharatpur-11, Chitwan, Nepal</span>
               </div>
-              <div className="flex items-center gap-2">
-                <FaMobileScreenButton /> <span>+977 987654321</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <MdMail /> <span>test@test.com</span>
-              </div>
+              <Link
+                role="div"
+                to={"tel:+9779855060106"}
+                className="flex group items-center cursor-pointer gap-2"
+              >
+                <FaMobileScreenButton />{" "}
+                <span className="sm:group-hover:text-[#8d8dfa] duration-150">
+                  +977 9855060106
+                </span>
+              </Link>
+              <Link
+                role="div"
+                to={"mailto:nepalevsat@gmail.com"}
+                className="flex cursor-pointer group items-center gap-2"
+              >
+                <MdMail />{" "}
+                <span className="sm:group-hover:text-[#8d8dfa] duration-150">
+                  nepalevsat@gmail.com
+                </span>
+              </Link>
             </div>
           </div>
         </div>

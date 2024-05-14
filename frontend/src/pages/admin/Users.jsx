@@ -42,6 +42,11 @@ function Users() {
             All Registered Users ({users.length})
           </span>
         </div>
+        {loading && (
+          <div className="fixed top-0 left-0 right-0 bottom-0 bg-white flex z-[89] justify-center items-center">
+            <span className="loading loading-spinner scale-125 text-gray-800"></span>
+          </div>
+        )}
         <div className="flex flex-col gap-5">
           {users.map((user, i) => (
             <div

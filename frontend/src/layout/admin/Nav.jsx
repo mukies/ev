@@ -74,7 +74,10 @@ function Nav() {
         >
           <FaSearch size={25} />
         </Link>
-        <span onClick={logout} className="btn ">
+        <span
+          onClick={logout}
+          className="btn dark:bg-gray-700 dark:text-white dark:border-gray-700 dark:hover:text-white "
+        >
           {/* <FaSearch size={25} /> */}Logout
         </span>
       </div>

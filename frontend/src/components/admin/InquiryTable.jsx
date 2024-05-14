@@ -40,7 +40,7 @@ function InquiryTable({ item, setInquiries }) {
         </div>
       </td>
       <td>{item.email}</td>
-      <td>{item.location}</td>
+      <td className="capitalize">{item.location}</td>
       <th className="flex items-center gap-1 ">
         <button onClick={() => setCard(item)} className="btn btn-ghost btn-sm">
           details

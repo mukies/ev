@@ -1,4 +1,6 @@
+/* eslint-disable react/prop-types */
 import Footer from "./Footer";
+import MobileNavigation from "./MobileNavigation";
 import Navbar from "./Navbar";
 
 const Layout = ({ children }) => {
@@ -7,6 +9,7 @@ const Layout = ({ children }) => {
       <Navbar />
       {children}
       <Footer />
+      <MobileNavigation />
     </>
   );
 };

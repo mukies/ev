@@ -1,6 +1,8 @@
 const userModel = require("../models/users.m");
+const adminModel = require("../models/admin.m");
 const bcrypt = require("bcrypt");
 const { getToken } = require("../utils/getToken");
+const { sendContactMail } = require("../utils/contactMail");
 
 exports.userLogin = async (req, res) => {
   const { email, password } = req.body;
@@ -120,10 +122,28 @@ exports.getUsers = async (req, res) => {
 
 exports.getSingleUser = async (req, res) => {
   try {
-    const user = await userModel.findById(req.params.id).select("fullName");
+    const admin = await adminModel.findById(req.params.id).select("fullName");
 
-    res.json({ success: true, user });
+    res.json({ success: true, admin });
   } catch (error) {
     res.json({ success: false, message: "Error while fetching user details" });
+  }
+};
+
+exports.contactMail = async (req, res) => {
+  const { name, email, message } = req.body;
+
+  if (!name || !email || !message)
+    return res.json({
+      success: false,
+      message: "Plese fill the form properly.",
+    });
+
+  try {
+    await sendContactMail(name, email, message, res);
+
+    res.json({ success: true, message: "Message submitted." });
+  } catch (error) {
+    res.json({ success: false, message: "Error while submitting message." });
   }
 };

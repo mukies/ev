@@ -70,7 +70,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="flex sm:border-2 w-[95%] flex-col sm:flex-row gap-3 text-black mx-auto border-gray-300 rounded-lg text-wrap sm:p-4 p-1 mt-10">
+        <div className="flex sm:border-2 w-[95%] flex-col md:flex-row gap-3 text-black mx-auto border-gray-300 rounded-lg text-wrap sm:p-4 p-1 mt-10">
           <div className="flex flex-col gap-5 flex-[2] p-2">
             <div className="flex flex-col gap-5 items-center">
               <h2 className="text-3xl font-semibold">Enterprise Vision</h2>
@@ -145,7 +145,7 @@ const Home = () => {
               comprehensive OEM& ODM service.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 px-2 sm:px-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 px-2 sm:px-10">
             {whatCanWeDo.map((item, i) => (
               <div className="flex items-center flex-col gap-5 sm:p-5" key={i}>
                 <img

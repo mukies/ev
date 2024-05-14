@@ -11,9 +11,8 @@ export const useUserDetails = () => {
       setLoading(true);
       const { data } = await axios.get(`/api/user/get-single-user/${uid}`);
 
-      console.log("first", data);
       if (data.success) {
-        setUser(data.user);
+        setUser(data.admin);
       } else {
         toast.error(data.message);
       }
