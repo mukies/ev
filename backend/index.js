@@ -9,6 +9,7 @@ const inquiryRoute = require("./routes/inquiry");
 const cookie = require("cookie-parser");
 require("dotenv").config();
 require("./db/db.config");
+const path = require("path");
 
 //mmiddlewares
 app.use(express.json({ limit: "50mb" }));
@@ -28,6 +29,16 @@ app.use("/api/product", productRoute);
 app.use("/api/admin", adminRoute);
 app.use("/api/user", userRoute);
 app.use("/api/inquiry", inquiryRoute);
+
+if (process.env.NODE_ENV == "prod") {
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+  // react app
+  app.get("*", (req, res) => {
+    // res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
+    res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
+  });
+}
 
 const port = process.env.PORT || 8080;
 

@@ -37,7 +37,7 @@ const Home = () => {
     },
   ];
   return (
-    <Layout>
+    <Layout title={"Nest - Home"}>
       <div className="">
         <div className="h-[calc(100vh-60px)] sm:h-[calc(100vh-100px)] relative">
           <LazyLoadImage
@@ -78,9 +78,13 @@ const Home = () => {
                 World-Class EV Charger Manufacturer Provide high-quality and
                 reliablevehicle charging solutions.
               </p>
-              <button className=" btn btn-accent btn-outline ">
+              <Link
+                role="button"
+                to={"/about-us"}
+                className=" btn btn-accent btn-outline "
+              >
                 Learn More
-              </button>
+              </Link>
             </div>
             <div className="h-[250px] w-full overflow-hidden">
               <LazyLoadImage
@@ -108,9 +112,13 @@ const Home = () => {
                 <li>Advanced charging technologyexpertise</li>
                 <li>Exceptional customer service andsupport</li>
               </ul>
-              <button className=" btn btn-accent btn-outline ">
+              <Link
+                role="button"
+                to={"/faq"}
+                className=" btn btn-accent btn-outline "
+              >
                 Learn More
-              </button>
+              </Link>
             </div>
           </div>
           <div className=" flex flex-col gap-5 h-full flex-[3]">

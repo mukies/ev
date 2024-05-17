@@ -3,7 +3,7 @@ import ProductShowcase from "../components/ProductShowcase";
 
 function AcSolution() {
   return (
-    <Layout>
+    <Layout title={"Nest - AC Charger Solution"}>
       <div>
         <div
           style={{

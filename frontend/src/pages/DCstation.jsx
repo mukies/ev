@@ -1,7 +1,7 @@
 import Layout from "../layout/Layout";
 import Categories from "../components/Categories";
 import { categories } from "../assets/categories";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Product from "../components/Product";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -34,7 +34,7 @@ function DCstation() {
     }
   };
   return (
-    <Layout>
+    <Layout title={"Nest - DC Charging Station"}>
       <div className="min-h-[calc(100dvh-100px)] text-black flex flex-col">
         {loading && (
           <div className="fixed top-0 left-0 right-0 bottom-0 bg-white flex z-[89] justify-center items-center">
@@ -64,7 +64,13 @@ function DCstation() {
               </li>
             </ul>
             <div className="flex justify-end w-[300px] sm:w-[400px]">
-              <button className="btn btn-info">Order Now</button>
+              <Link
+                role="button"
+                to={"/enquiry-for-products"}
+                className="btn btn-info"
+              >
+                Order Now
+              </Link>
             </div>
           </div>
         </div>

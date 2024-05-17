@@ -2,7 +2,7 @@ import Layout from "../layout/Layout";
 
 function About() {
   return (
-    <Layout>
+    <Layout title={"Nest - About Us"}>
       <div className="text-gray-700 sm:px-16 px-1 flex flex-col gap-5">
         <div className="flex flex-col gap-5">
           <h3 className="text-3xl font-semibold">About NEST</h3>
