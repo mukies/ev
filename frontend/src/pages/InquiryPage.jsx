@@ -52,7 +52,7 @@ function InquiryPage() {
   };
 
   return (
-    <Layout>
+    <Layout title={"Nest - Inquiry for Product"}>
       <div className="text-gray-700 flex flex-col sm:flex-row sm:px-10  py-5 ">
         {show && <Thankyou title={"inquiry"} closePopup={setShow} />}
         <div className="flex-1 flex flex-col justify-center gap-10 px-1">

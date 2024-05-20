@@ -53,7 +53,7 @@ const Home = () => {
             {" "}
             <div className="flex flex-col p-3 text-white text-wrap items-center gap-2 sm:gap-5">
               <h3 className="text-2xl sm:text-3xl flex items-center gap-3">
-                <span className="h-[2px] bg-white w-4"></span> Since 2017{" "}
+                <span className="h-[2px] bg-white w-4"></span> Since 2024{" "}
                 <span className="h-[2px] bg-white w-4"></span>
               </h3>
               <h2 className="text-[60px] sm:text-[80px] font-semibold">NEST</h2>
@@ -61,7 +61,7 @@ const Home = () => {
                 Contribute to a green future
               </h3>
               <h1 className="text-2xl mb-4 sm:text-[45px] text-center font-bold">
-                A World-Class EV Charger Manufacturer
+                A World-Class EV Charger Distributor
               </h1>
               <p className="text-xl sm:text-2xl text-center">
                 The exploration and inovation of EV chargers has lead us from
@@ -75,7 +75,7 @@ const Home = () => {
             <div className="flex flex-col gap-5 items-center">
               <h2 className="text-3xl font-semibold">Enterprise Vision</h2>
               <p className="w-[90%] mx-auto text-lg">
-                World-Class EV Charger Manufacturer Provide high-quality and
+                World-Class EV Charger Distributor Provide high-quality and
                 reliablevehicle charging solutions.
               </p>
               <Link

@@ -46,7 +46,7 @@ const Contact = () => {
   };
 
   return (
-    <Layout>
+    <Layout title={"Nest - Contact Us"}>
       <div
         style={{
           background:

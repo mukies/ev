@@ -6,9 +6,11 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { FaArrowRightLong } from "react-icons/fa6";
+import PageNotFound from "./PageNotFound";
 
 function Cables() {
   const { name } = useParams();
+
   //   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -17,7 +19,17 @@ function Cables() {
   //   const { id } = useParams();
 
   useEffect(() => {
-    getProduct();
+    if (
+      name == "charging-cable" ||
+      name == "ev-adapter" ||
+      name == "ev-parts"
+    ) {
+      getProduct();
+    }
+
+    // else {
+    //   navigate("/contact-us/jkskdj");
+    // }
   }, [name]);
 
   const getProduct = async () => {
@@ -37,6 +49,13 @@ function Cables() {
     }
   };
 
+  if (
+    name !== "charging-cable" &&
+    name !== "ev-adapter" &&
+    name !== "ev-parts"
+  ) {
+    return <PageNotFound />;
+  }
   return (
     <Layout
       title={
@@ -187,6 +206,9 @@ function Cables() {
                   >
                     <div className="h-[250px] w-[250px] overflow-hidden rounded-lg">
                       <img
+                        onClick={() =>
+                          navigate(`/product-page/${product.slug}`)
+                        }
                         src={product.productImage}
                         alt="product_image"
                         loading="lazy"
@@ -209,7 +231,7 @@ function Cables() {
                       <div className="border-b border-red-600 flex justify-end">
                         <Link
                           role="span"
-                          to={`#`}
+                          to={`/enquiry-for-products`}
                           className="text-[red] flex items-center gap-3 cursor-pointer md:hover:scale-110 duration-200 "
                         >
                           Learn more <FaArrowRightLong />

@@ -1,12 +1,15 @@
 /* eslint-disable react/prop-types */
 import { FaArrowRightLong } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Product({ product }) {
+  const navigate = useNavigate();
+
   return (
     <div className="flex items-center text-wrap flex-col sm:flex-row gap-[50px]">
       <div className="h-[250px] w-[250px] overflow-hidden rounded-lg">
         <img
+          onClick={() => navigate(`/product-page/${product.slug}`)}
           src={product.productImage}
           alt="product_image"
           loading="lazy"

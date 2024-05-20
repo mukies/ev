@@ -176,7 +176,16 @@ function CreateProduct() {
           </label>
 
           {!url2 && (
-            <label htmlFor="image" className="flex max-w-max flex-col gap-2">
+            <label
+              htmlFor="image"
+              className={` ${
+                category == "charging-cable" ||
+                category == "ev-adapter" ||
+                category == "ev-parts"
+                  ? "hidden"
+                  : "flex"
+              } max-w-max flex-col gap-2 `}
+            >
               <div className="text-xl max-w-max p-4 border-2 border-gray-300 rounded-lg  cursor-pointer">
                 Descriptive Image
               </div>

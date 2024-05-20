@@ -43,7 +43,7 @@ function Faq() {
     },
   ];
   return (
-    <Layout>
+    <Layout title={"Nest - FAQ"}>
       <div className="text-gray-700 py-3 max-w-[768px] mx-auto flex flex-col gap-10">
         <div className="flex flex-col gap-3 items-center">
           <h2 className="sm:text-4xl font-semibold text-xl">FAQ</h2>

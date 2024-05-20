@@ -5,7 +5,7 @@ import { FaLocationDot } from "react-icons/fa6";
 
 function Footer() {
   return (
-    <div className="bg-[#242424] flex flex-col  gap-1 text-wrap py-5 sm:py-10 sm:px-10 md:px-20 text-gray-200 h-auto md:h-[45vh]">
+    <div className="bg-[#242424] flex flex-col  gap-1 text-wrap py-5 sm:py-10 sm:px-5 md:px-5 text-gray-200 h-auto md:h-[45vh]">
       <div className="flex flex-col md:flex-row gap-5 sm:justify-center items-center md:items-start sm:gap-10 md:gap-2 px-5">
         <div className=" flex-1 flex flex-col gap-1 w-full items-center ">
           <img
@@ -16,7 +16,7 @@ function Footer() {
         </div>
         <div className=" flex-1 items-center md:items-start flex flex-col gap-3  w-full ">
           <h3 className="text-2xl font-bold">Product</h3>
-          <ul className="list-none text-[16px] sm:text-xl flex flex-col gap-2">
+          <ul className="list-none text-[16px] sm:text-xl md:text-lg lg:text-xl flex flex-col gap-2">
             <Link
               role="li"
               to={"/product/homeuse-ev-charger"}
@@ -74,7 +74,7 @@ function Footer() {
               <IoCall size={20} /> +977 9855060106
             </span>
             <span className="flex items-center gap-4">
-              <MdEmail size={20} /> nepqlevsat@gmail.com
+              <MdEmail size={20} /> nepalevsat@gmail.com
             </span>
             <span className="flex items-center gap-4">
               <FaLocationDot /> Bharatpur, Chitwan
@@ -84,7 +84,7 @@ function Footer() {
       </div>
       <span className="divider divider-neutral"></span>
       <p className="flex gap-3 items-center text-lg sm:text-xl  mx-auto">
-        All Rights Reserved NEST© 2022
+        All Rights Reserved NEST© 2024
       </p>
     </div>
   );

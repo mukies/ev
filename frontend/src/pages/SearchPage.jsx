@@ -33,7 +33,7 @@ function SearchPage() {
     }
   };
   return (
-    <Layout>
+    <Layout title={"Nest - Search Product"}>
       <div
         className={`min-h-[40vh] text-gray-700 py-5 sm:min-h-[calc(55vh-100px)] max-w-[768px] mx-auto flex flex-col gap-3 ${
           products ? "" : "justify-center items-center"

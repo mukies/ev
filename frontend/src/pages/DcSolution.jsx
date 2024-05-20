@@ -3,7 +3,7 @@ import Layout from "../layout/Layout";
 
 function DcSolution() {
   return (
-    <Layout>
+    <Layout title={"Nest - DC Charger Solution"}>
       <div className="text-black text-wrap">
         <div
           style={{

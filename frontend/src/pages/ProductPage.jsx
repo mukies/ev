@@ -30,8 +30,8 @@ function ProductPage() {
   };
 
   return (
-    <Layout>
-      <div className="text-wrap text-gray-800">
+    <Layout title={product?.productName}>
+      <div className="text-wrap mb-5 text-gray-800">
         {loading && (
           <div className="fixed top-0 left-0 right-0 bottom-0 bg-white flex z-[89] justify-center items-center">
             <span className="loading loading-spinner scale-125 text-gray-800"></span>
@@ -57,9 +57,13 @@ function ProductPage() {
               className=" flex  text-wrap list-disc sm:list-none  text-title flex-col gap-1 "
             ></div> */}
             <div className="flex justify-center mx-auto w-[300px] sm:w-[400px]">
-              <button className="btn btn-success text-white w-full sm:max-w-max">
+              <Link
+                role="button"
+                to={"/enquiry-for-products"}
+                className="btn btn-success text-white w-full sm:max-w-max"
+              >
                 Order Now
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -69,7 +73,7 @@ function ProductPage() {
               src={product.productImage}
               alt="product-image"
               loading="lazy"
-              className="h-[350px] w-full object-cover bg-center sm:hover:scale-110 duration-200"
+              className="h-[350px] w-full object-contain mix-blend-multiply bg-center sm:hover:scale-110 duration-200"
             />
           </div>
           <div className="flex flex-col gap-3 flex-1 justify-center">

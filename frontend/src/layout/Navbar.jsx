@@ -58,7 +58,7 @@ const Navbar = () => {
         <ul className=" flex items-center list-none gap-1 text-gray-700 text-xl">
           <li
             onClick={() => navigate("/")}
-            className="p-2 hover:bg-gray-300 duration-300 rounded-md cursor-pointer capitalize"
+            className={`p-2 hover:bg-gray-300 duration-300 rounded-md cursor-pointer capitalize `}
           >
             Home
           </li>
