@@ -10,6 +10,9 @@ const cookie = require("cookie-parser");
 require("dotenv").config();
 require("./db/db.config");
 const path = require("path");
+const job = require("./cron/cron");
+
+job.start();
 
 //mmiddlewares
 app.use(express.json({ limit: "50mb" }));

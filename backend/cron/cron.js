@@ -1,7 +1,7 @@
 const { CronJob } = require("cron");
 const https = require("https");
 
-const URL = "https://mie-0fly.onrender.com";
+const URL = "https://nest-vtke.onrender.com";
 
 const job = new CronJob("*/14 * * * *", function () {
   https
