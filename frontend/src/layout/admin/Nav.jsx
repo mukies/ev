@@ -23,7 +23,7 @@ function Nav() {
       {/* --  */}
       <div
         onClick={() => {
-          navigate("/admin-dashboard");
+          navigate("/");
         }}
         className="z-20 cursor-pointer"
       >
@@ -36,7 +36,7 @@ function Nav() {
       <div className="hidden lg:flex">
         <ul className=" flex items-center list-none  gap-1 text-xl">
           <Link
-            to={"/admin-dashboard"}
+            to={"/"}
             role="li"
             className="p-2 hover:bg-gray-300 duration-300 rounded-md cursor-pointer capitalize"
           >

@@ -2,18 +2,21 @@
 import Footer from "./Footer";
 import MobileNavigation from "./MobileNavigation";
 import Navbar from "./Navbar";
-import { Helmet } from "react-helmet";
+import HelmetExport, { Helmet } from "react-helmet";
 
 const Layout = ({ children, description, title, author, keywords }) => {
   return (
     <>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <meta name="description" content={description} />
-        <meta name="keywords" content={keywords} />
-        <meta name="author" content={author} />
-        <title>{title}</title>
-      </Helmet>
+      {/* <HelmetExport>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <meta name="description" content={description} />
+          <meta name="keywords" content={keywords} />
+          <meta name="author" content={author} />
+          <title>{title}</title>
+        </Helmet>
+      </HelmetExport> */}
+
       <Navbar />
       {children}
       <Footer />

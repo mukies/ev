@@ -21,7 +21,7 @@ export const useAdminRegister = () => {
         console.log("login", loginData);
         if (loginData.success) {
           localStorage.setItem("_A", JSON.stringify(loginData.id));
-          window.location.href = "/admin-dashboard";
+          window.location.href = "/";
         } else {
           toast.error(loginData.message);
         }
