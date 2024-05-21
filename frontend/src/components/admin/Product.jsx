@@ -35,7 +35,7 @@ function Product({ product, setProduct }) {
         <div className="h-[50px] bg-gray-200 w-[50px] sm:h-[100px] sm:w-[100px] overflow-hidden rounded-md">
           <img
             src={product.productImage}
-            alt={product.productName}
+            alt={"product image"}
             className="h-full w-full object-center object-cover cursor-pointer sm:hover:scale-105 duration-200"
           />
         </div>

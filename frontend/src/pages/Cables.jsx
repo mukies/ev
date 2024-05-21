@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { FaArrowRightLong } from "react-icons/fa6";
+import PageNotFound from "./PageNotFound";
 // import PageNotFound from "./PageNotFound";
 
 function Cables() {
@@ -49,13 +50,13 @@ function Cables() {
     }
   };
 
-  // if (
-  //   name !== "charging-cable" &&
-  //   name !== "ev-adapter" &&
-  //   name !== "ev-parts"
-  // ) {
-  //   return <PageNotFound />;
-  // }
+  if (
+    name !== "charging-cable" &&
+    name !== "ev-adapter" &&
+    name !== "ev-parts"
+  ) {
+    return <PageNotFound />;
+  }
   return (
     <Layout
       title={
@@ -210,12 +211,12 @@ function Cables() {
                           navigate(`/product-page/${product.slug}`)
                         }
                         src={product.productImage}
-                        alt="product_image"
+                        alt="product image"
                         loading="lazy"
-                        className="h-full w-full object-cover object-center hover:scale-110 duration-300 cursor-pointer"
+                        className="h-full w-full object-contain mix-blend-multiply object-center hover:scale-110 duration-300 cursor-pointer"
                       />
                     </div>
-                    <div className="flex flex-col justify-center gap-2 w-full">
+                    <div className="flex sm:w-[80%] flex-col justify-center gap-2 w-full">
                       <h2 className="text-xl sm:text-2xl font-bold">
                         {product.productName}
                       </h2>

@@ -11,9 +11,9 @@ function Product({ product }) {
         <img
           onClick={() => navigate(`/product-page/${product.slug}`)}
           src={product.productImage}
-          alt="product_image"
+          alt="product image"
           loading="lazy"
-          className="h-full w-full object-cover object-center hover:scale-110 duration-300 cursor-pointer"
+          className="h-full w-full object-contain mix-blend-multiply object-center hover:scale-110 duration-300 cursor-pointer"
         />
       </div>
       <div className="flex flex-col justify-center gap-2 w-full">

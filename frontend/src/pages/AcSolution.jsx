@@ -30,7 +30,7 @@ function AcSolution() {
               </li>
               <li className="">2 year warranty</li>
             </ul>
-            <div className="flex justify-end w-[300px] sm:w-[400px]">
+            <div className="flex sm:justify-end justify-center w-full sm:w-[400px]">
               <button className="btn bg-[red] hover:bg-[#ff2e2e] w-full sm:max-w-max duration-200 text-white border-none">
                 Order Now
               </button>
@@ -49,7 +49,7 @@ function AcSolution() {
               customers, showing that you’re committed to sustainability.
             </p>
           </div>
-          <div className="grid text-gray-700 grid-cols-1 sm:grid-cols-3 ">
+          <div className="grid text-gray-700 grid-cols-1 gap-5  md:grid-cols-3 ">
             <div className=" flex flex-col gap-5 ">
               <div className="h-[350px] w-[350px] mx-auto rounded-lg overflow-hidden">
                 <img
@@ -145,7 +145,7 @@ function AcSolution() {
           <h2 className="text-3xl text-gray-700 font-semibold text-center">
             How Long Does It Take to Charge an Electric Vehicle?
           </h2>
-          <div className=" flex flex-col sm:flex-row  items-center gap-5 sm:px-10">
+          <div className=" flex flex-col md:flex-row  items-center gap-5 sm:px-10">
             <div className="h-auto flex-1 overflow-hidden rounded-xl w-full">
               <img
                 src="/car_charging.webp"
@@ -227,7 +227,7 @@ function AcSolution() {
             </p>
           </div>
         </div>
-        <div className=" flex flex-col sm:flex-row my-10 text-wrap  items-center gap-5 sm:px-10">
+        <div className=" flex flex-col md:flex-row my-10 text-wrap  items-center gap-5 sm:px-10">
           <div className="h-auto flex-1 overflow-hidden rounded-xl w-full">
             <img
               src="/charging.webp"

@@ -39,14 +39,14 @@ const Home = () => {
   return (
     <Layout title={"Nest - Home"}>
       <div className="">
-        <div className="h-[calc(100vh-60px)] sm:h-[calc(100vh-100px)] relative">
+        <div className="h-[calc(100vh-60px)] sm:h-[calc(100vh-100px)] relative overflow-hidden">
           <LazyLoadImage
-            src="/hero.jpg"
+            src="/hero2.jpeg"
             alt="hero-img"
             height={"100%"}
             width={"100%"}
             effect="black-and-white"
-            className="h-full w-full filter blur-[1px] object-cover object-center "
+            className="h-full w-full filter brightness-[70%] object-cover object-bottom scale-110 "
             loading="lazy"
           />
           <div className=" absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center">
