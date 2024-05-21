@@ -80,7 +80,7 @@ const Contact = () => {
               </p>
             </div>
           </div>
-          <div className="w-[80%] flex gap-2 items-center  mx-auto">
+          <div className="w-[80%] flex flex-col sm:flex-row gap-2 items-center  mx-auto">
             <div className=" flex-1 ">
               <div className="card shrink-0 w-full max-w-sm shadow-2xl ">
                 <form

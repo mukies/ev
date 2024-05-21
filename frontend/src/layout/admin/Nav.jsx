@@ -123,6 +123,11 @@ function Nav() {
                 Users
               </Link>
             </li>
+            <li onClick={logout}>
+              <Link role="li" to={"/"}>
+                Logout
+              </Link>
+            </li>
 
             <li className="md:hidden">
               <Link role="a" to={"/admin/search-product"}>

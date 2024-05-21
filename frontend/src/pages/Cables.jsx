@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { FaArrowRightLong } from "react-icons/fa6";
-import PageNotFound from "./PageNotFound";
+// import PageNotFound from "./PageNotFound";
 
 function Cables() {
   const { name } = useParams();
@@ -49,13 +49,13 @@ function Cables() {
     }
   };
 
-  if (
-    name !== "charging-cable" &&
-    name !== "ev-adapter" &&
-    name !== "ev-parts"
-  ) {
-    return <PageNotFound />;
-  }
+  // if (
+  //   name !== "charging-cable" &&
+  //   name !== "ev-adapter" &&
+  //   name !== "ev-parts"
+  // ) {
+  //   return <PageNotFound />;
+  // }
   return (
     <Layout
       title={
