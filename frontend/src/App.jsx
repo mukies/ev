@@ -14,7 +14,7 @@ import AdminHome from "./pages/admin/AdminHome";
 import Products from "./pages/admin/Products";
 import EditProduct from "./pages/admin/EditProduct";
 import Users from "./pages/admin/Users";
-import AdminProtectedRoute from "./protection/AdminProtectedRoute";
+// import AdminProtectedRoute from "./protection/AdminProtectedRoute";
 import PageNotFound from "./pages/PageNotFound";
 import Contact from "./pages/Contact";
 import SearchPage from "./pages/SearchPage";
@@ -42,14 +42,28 @@ function App() {
         <Route path="/product-search" element={<SearchPage />} />
         <Route path="/enquiry-for-products" element={<InquiryPage />} />
 
-        <Route element={<AdminProtectedRoute />}>
-          <Route path="/admin/product" element={<Products />} />
-          <Route path="/admin/inquiries" element={<InquiryPageAdmin />} />
-          <Route path="/admin/user" element={<Users />} />
-          <Route path="/admin/search-product" element={<SearchPageAdmin />} />
-          <Route path="/admin/add-product" element={<CreateProduct />} />
-          <Route path="/admin/product/:id" element={<EditProduct />} />
-        </Route>
+        <Route
+          path="/admin/product"
+          element={adminAuth ? <Products /> : <Home />}
+        />
+        <Route
+          path="/admin/inquiries"
+          element={adminAuth ? <InquiryPageAdmin /> : <Home />}
+        />
+        <Route path="/admin/user" element={adminAuth ? <Users /> : <Home />} />
+        <Route
+          path="/admin/search-product"
+          element={adminAuth ? <SearchPageAdmin /> : <Home />}
+        />
+        <Route
+          path="/admin/add-product"
+          element={adminAuth ? <CreateProduct /> : <Home />}
+        />
+        <Route
+          path="/admin/product/:id"
+          element={adminAuth ? <EditProduct /> : <Home />}
+        />
+
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
