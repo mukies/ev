@@ -3,14 +3,14 @@ import { FaTimes } from "react-icons/fa";
 /* eslint-disable react/prop-types */
 function InquiryCard({ cardItem, setCard }) {
   return (
-    <div className="fixed top-0 left-0 right-0 bottom-0 bg-[#000000c8] z-[111] flex justify-center items-center">
+    <div className="fixed top-0 left-0 right-0 bottom-0  bg-[#000000c8] z-[111] flex justify-center items-center">
       <div className="max-w-max relative h-auto   rounded-lg">
         <div className="card w-[350px]  overflow-x-hidden overflow-y-auto max-h-[550px] sm:w-96 lg:w-[60vw] p-2 bg-cyan-500 text-primary-content ">
-          <span className="underline text-2xl text-center font-semibold">
+          <span className="underline text-2xl text-center text-gray-900 font-semibold">
             Inquiry Details
           </span>
-          <div className="card-body">
-            <h2 className="card-title font-normal capitalize text-lg">
+          <div className="card-body text-gray-900">
+            <h2 className="card-title font-normal capitalize text-lg ">
               <span className="font-[600] text-[20px]  ">Name:</span>{" "}
               {cardItem.name}
             </h2>
